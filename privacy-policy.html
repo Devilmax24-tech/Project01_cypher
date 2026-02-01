@@ -80,6 +80,8 @@
 
         .age-logo {
             height: 90px;
+            object-fit: cover;
+            object-position: top;
             border-radius: 12px;
             margin-bottom: 30px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
@@ -171,7 +173,8 @@
 <body>
     <div id="age-verification-overlay" class="age-overlay">
         <div class="age-card">
-            <img src="image1.jpeg" alt="BrutuS Logo" class="age-logo">
+            <img src="assets/brutus-main-logo.jpg" alt="BrutuS Logo" class="age-logo"
+                style="width: auto; height: 80px; object-fit: contain;">
             <h2>Are you above 18+?</h2>
             <p>To enter this site, you must be of legal smoking age in your jurisdiction.</p>
             <div class="age-buttons">
@@ -203,6 +206,36 @@
             <p><strong>Last Updated: January 2026</strong></p>
         </div>
     </div>
+
+    <!-- Official WhatsApp Floating Action Button (Blue) -->
+    <style>
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #007bff;
+            color: #FFF;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .wa-float:hover {
+            transform: scale(1.1);
+            background-color: #0056b3;
+        }
+    </style>
+    <a href="https://wa.me/917067968137" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
         // Age Verification Logic

@@ -37,20 +37,25 @@
         }
 
         .brand-name {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-weight: 950;
+            letter-spacing: 1px;
+            line-height: 1;
+            background: linear-gradient(90deg, var(--primary-gold) 0%, var(--dark-charcoal) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            margin: 0;
-            color: var(--dark-charcoal);
         }
 
         .brand-sub {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--primary-gold);
+            letter-spacing: 1px;
+            color: var(--dark-charcoal);
             margin: 0;
+            opacity: 0.8;
         }
 
         .nav-link {
@@ -94,22 +99,80 @@
 
         /* Sidebar Filters */
         .filter-sidebar {
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
+            background: #ffffff;
+            padding: 40px 25px;
+            border-radius: 24px;
             position: sticky;
             top: 100px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
         }
 
         .filter-title {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
+            font-weight: 900;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            margin-bottom: 25px;
-            border-bottom: 2px solid var(--primary-gold);
-            display: inline-block;
-            padding-bottom: 5px;
+            letter-spacing: 3px;
+            margin-bottom: 35px;
+            color: var(--primary-gold);
+            display: block;
+            border-left: 4px solid var(--primary-gold);
+            padding-left: 15px;
+        }
+
+        .collection-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .collection-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 18px;
+            border-radius: 12px;
+            background: #f8f9fa;
+            border: 1px solid transparent;
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            color: #444;
+        }
+
+        .collection-item:hover {
+            background: #fff;
+            border-color: var(--primary-gold);
+            transform: translateX(10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            color: #000;
+        }
+
+        .collection-item.active {
+            background: var(--dark-charcoal);
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .collection-name {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .collection-count {
+            font-size: 0.7rem;
+            background: rgba(197, 160, 89, 0.2);
+            color: var(--primary-gold);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 800;
+        }
+
+        .collection-item.active .collection-count {
+            background: var(--primary-gold);
+            color: #000;
         }
 
         /* Floating 3D Product System */
@@ -130,13 +193,38 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
+            background: #ffffff;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+        }
+
+        .product-float-stage::before {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 10%;
+            width: 80%;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.1);
+            filter: blur(25px);
+            border-radius: 50%;
+            transform: translateZ(-100px);
+            transition: var(--transition);
+            opacity: 0;
+        }
+
+        .product-float-stage:hover::before {
+            opacity: 1;
+            bottom: 20px;
+            transform: translateZ(-100px) scale(1.2);
         }
 
         .product-float-stage:hover {
-            transform: rotateY(-5deg) rotateX(3deg) translateY(-10px);
-            background: rgba(255, 255, 255, 0.05);
+            transform: rotateY(-12deg) rotateX(6deg) translateY(-15px);
+            box-shadow: 25px 25px 60px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-gold);
         }
 
         .product-float-img-box {
@@ -152,14 +240,16 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2)) contrast(1.05) brightness(1.02);
+            image-rendering: -webkit-optimize-contrast;
             transform: translateZ(60px);
-            transition: transform 0.6s ease;
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
             border-radius: 12px;
         }
 
         .product-float-stage:hover .product-float-img {
-            transform: translateZ(120px) scale(1.05);
+            transform: translateZ(120px) scale(1.1);
+            filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.3)) contrast(1.1) brightness(1.08);
         }
 
         .product-float-info {
@@ -233,12 +323,35 @@
         }
 
         .legal-note {
+            font-size: 0.72rem;
+            color: #666;
+            margin-top: 50px;
+            padding: 24px;
+            background: #fdfbf7;
+            border-left: 3px solid var(--primary-gold);
+            border-radius: 4px;
+            line-height: 1.6;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+        }
+
+        .legal-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
             font-size: 0.75rem;
-            color: #999;
-            margin-top: 40px;
-            padding: 20px;
-            border: 1px dashed #ddd;
-            border-radius: 8px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--dark-charcoal);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legal-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.05);
         }
 
         footer {
@@ -260,10 +373,14 @@
     <nav class="navbar navbar-expand-lg fixed-top shadow-sm py-3">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="image1.jpeg" alt="BrutuS Logo" style="height: 50px; border-radius: 6px;">
-                <div class="ms-2">
-                    <p class="brand-name">BRUTUS</p>
-                    <p class="brand-sub">California Tobacco</p>
+                <img src="assets/brutus-main-logo.jpg" alt="BrutuS Logo"
+                    style="height: 55px; width: auto; object-fit: contain;">
+                <div class="d-none d-sm-flex flex-column ms-2" style="line-height: 1.1;">
+                    <span class="fw-bold text-uppercase text-dark"
+                        style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; letter-spacing: 1px;">BrutuS</span>
+                    <span class="text-secondary text-uppercase"
+                        style="font-size: 0.55rem; letter-spacing: 0.5px; font-weight: 600;">California Tobacco
+                        Company</span>
                 </div>
             </a>
 
@@ -294,55 +411,81 @@
         <div class="row g-5">
             <!-- Sidebar -->
             <div class="col-lg-3">
-                <div class="filter-sidebar shadow-sm d-none d-lg-block">
-                    <div class="filter-title">Collections</div>
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" checked id="c1">
-                        <label class="form-check-label small" for="c1">Signature Series</label>
-                    </div>
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" checked id="c2">
-                        <label class="form-check-label small" for="c2">Aromatic Blends</label>
-                    </div>
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" checked id="c3">
-                        <label class="form-check-label small" for="c3">Limited Reserves</label>
+                <div class="filter-sidebar">
+                    <div class="filter-title">Premier Collections</div>
+
+                    <div class="collection-group d-flex flex-lg-column gap-2 overflow-auto pb-2"
+                        style="white-space: nowrap; -ms-overflow-style: none; scrollbar-width: none;">
+                        <a href="javascript:void(0)" class="collection-item active"
+                            onclick="setActiveCategory('all', this)">
+                            <span class="collection-name">Show All</span>
+                            <span class="collection-count">06</span>
+                        </a>
+                        <a href="javascript:void(0)" class="collection-item"
+                            onclick="setActiveCategory('signature', this)">
+                            <span class="collection-name">Luxury Gold Series</span>
+                            <span class="collection-count">02</span>
+                        </a>
+                        <a href="javascript:void(0)" class="collection-item"
+                            onclick="setActiveCategory('industrial', this)">
+                            <span class="collection-name">Industrial Reserve</span>
+                            <span class="collection-count">01</span>
+                        </a>
+                        <a href="javascript:void(0)" class="collection-item"
+                            onclick="setActiveCategory('artisan', this)">
+                            <span class="collection-name">Artisan Profiles</span>
+                            <span class="collection-count">02</span>
+                        </a>
+                        <a href="javascript:void(0)" class="collection-item"
+                            onclick="setActiveCategory('exotic', this)">
+                            <span class="collection-name">Global Exotics</span>
+                            <span class="collection-count">01</span>
+                        </a>
                     </div>
 
-                    <div class="legal-note">
-                        <strong>Compliance Notice:</strong> All imagery is representational. We strictly adhere to COTPA
-                        2003 guidelines. Business-to-business inquiries only.
+                    <div class="legal-note mt-5 d-none d-lg-block">
+                        <div class="legal-title">Professional Standard</div>
+                        <p class="mb-0">
+                            Our industrial renders are developed exclusively for <span class="premium-serif text-dark"
+                                style="font-size: 0.8rem;">Brand Identity</span>.
+                            Strict adherence to <span class="fw-bold text-dark">COTPA 2003</span> regulatory compliance
+                            is maintained across all global showcase profiles.
+                        </p>
                     </div>
                 </div>
             </div>
 
             <!-- Product Grid -->
             <div class="col-lg-9">
+                <!-- Hero Banner for Grid -->
+                <div class="mb-5 rounded-4 overflow-hidden shadow-lg" style="height: 300px;">
+                    <img src="assets/products/uploaded_media_0_1769962563893.png" alt="BrutuS Experience"
+                        class="w-100 h-100" style="object-fit: cover; filter: contrast(1.1) brightness(0.9);">
+                </div>
+
                 <div class="mb-5">
-                    <h1 class="h3 fw-bold mb-2" style="font-family: 'Montserrat', sans-serif;">Professional Catalog</h1>
-                    <p class="text-secondary small mb-3">Explore our consistent industrial-grade flavour profiles.</p>
-                    <div style="max-width: 500px;">
-                        <span class="badge rounded-pill px-3 py-2"
-                            style="background: rgba(220, 53, 69, 0.05); color: #dc3545; border: 1px solid rgba(220, 53, 69, 0.2); font-size: 0.65rem; letter-spacing: 0.5px; font-weight: 700;">
-                            <i class="fas fa-info-circle me-1"></i> OUR OBJECTIVE IS NOT TO SELL, JUST TO SHOWCASE OUR
-                            BRAND
-                        </span>
-                    </div>
+                    <h1 class="h3 fw-bold mb-2 uppercase-spacing" style="font-family: 'Montserrat', sans-serif;">
+                        Professional Catalog</h1>
+                    <p class="text-secondary small mb-3">Explore our consistent industrial-grade flavour profiles
+                        with
+                        <span class="premium-serif text-dark">Elite Precision</span>.
+                    </p>
                 </div>
 
                 <div id="product-grid" class="row g-4">
                     <!-- Product 1 -->
-                    <div class="col-md-6 col-lg-4 product-float-item" data-name="american red blend signature">
+                    <div class="col-md-6 col-lg-4 product-float-item" data-category="industrial"
+                        data-name="american red blend signature brutes">
                         <div class="product-float-wrap">
                             <div class="product-float-stage" onclick="window.location.href='american-red.html'">
                                 <div class="product-float-img-box">
-                                    <img src="assets/products/uploaded_media_0_1769944372421.jpg"
+                                    <img src="assets/products/uploaded_media_1_1769962563893.jpg"
                                         alt="BrutuS American Red Blend" class="product-float-img">
                                 </div>
                                 <div class="product-float-info">
                                     <span class="product-float-tag">Industrial Grade</span>
                                     <h3 class="product-float-title">American Red</h3>
-                                    <p class="product-float-desc">Our flagship signature series for traditional
+                                    <p class="product-float-desc">Premium signature series for consistent industrial
                                         strength.</p>
                                     <a href="american-red.html" class="product-float-btn">View Showcase</a>
                                 </div>
@@ -351,7 +494,7 @@
                     </div>
 
                     <!-- Product 2 -->
-                    <div class="col-md-6 col-lg-4 product-float-item"
+                    <div class="col-md-6 col-lg-4 product-float-item" data-category="artisan"
                         data-name="espresso midnight coffee coffee warm aromatic">
                         <div class="product-float-wrap">
                             <div class="product-float-stage" onclick="window.location.href='#'">
@@ -362,7 +505,8 @@
                                 <div class="product-float-info">
                                     <span class="product-float-tag">Craft Fusion</span>
                                     <h3 class="product-float-title">Midnight Espresso</h3>
-                                    <p class="product-float-desc">Deep roasted coffee notes infused with rich aroma.</p>
+                                    <p class="product-float-desc">Deep roasted coffee notes infused with rich aroma.
+                                    </p>
                                     <a href="#" class="product-float-btn">Inquiry Only</a>
                                 </div>
                             </div>
@@ -370,7 +514,8 @@
                     </div>
 
                     <!-- Product 3 -->
-                    <div class="col-md-6 col-lg-4 product-float-item" data-name="mint menthol ice chill cool fresh">
+                    <div class="col-md-6 col-lg-4 product-float-item" data-category="exotic"
+                        data-name="mint menthol ice chill cool fresh">
                         <div class="product-float-wrap">
                             <div class="product-float-stage" onclick="window.location.href='#'">
                                 <div class="product-float-img-box">
@@ -380,7 +525,8 @@
                                 <div class="product-float-info">
                                     <span class="product-float-tag">Arctic Tech</span>
                                     <h3 class="product-float-title">Arctic Menthol</h3>
-                                    <p class="product-float-desc">Crystalline ice sensation for specialized markets.</p>
+                                    <p class="product-float-desc">Crystalline ice sensation for specialized markets.
+                                    </p>
                                     <a href="#" class="product-float-btn">Global Export</a>
                                 </div>
                             </div>
@@ -388,7 +534,7 @@
                     </div>
 
                     <!-- Product 4 -->
-                    <div class="col-md-6 col-lg-4 product-float-item"
+                    <div class="col-md-6 col-lg-4 product-float-item" data-category="artisan"
                         data-name="clove spice oriental warm reserved indonesian">
                         <div class="product-float-wrap">
                             <div class="product-float-stage" onclick="window.location.href='#'">
@@ -399,7 +545,8 @@
                                 <div class="product-float-info">
                                     <span class="product-float-tag">Spice Reserved</span>
                                     <h3 class="product-float-title">Indonesian Clove</h3>
-                                    <p class="product-float-desc">Authentic spice grade infusions for exotic profiles.
+                                    <p class="product-float-desc">Authentic spice grade infusions for exotic
+                                        profiles.
                                     </p>
                                     <a href="#" class="product-float-btn">Quote Required</a>
                                 </div>
@@ -407,25 +554,26 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-4 product-float-item"
+                    <div class="col-md-6 col-lg-4 product-float-item" data-category="signature"
                         data-name="pan flavor indian traditional heritage">
                         <div class="product-float-wrap">
                             <div class="product-float-stage" onclick="window.location.href='#'">
                                 <div class="product-float-img-box">
-                                    <img src="assets/products/uploaded_media_0_1769945712147.jpg" alt="BrutuS Royal Pan"
-                                        class="product-float-img">
+                                    <img src="assets/products/uploaded_media_2_1769962563893.jpg"
+                                        alt="BrutuS Pan Flavour" class="product-float-img">
                                 </div>
                                 <div class="product-float-info">
                                     <span class="product-float-tag">Heritage Series</span>
-                                    <h3 class="product-float-title">Royal Pan</h3>
-                                    <p class="product-float-desc">Traditional betel leaf aromatic signature series.</p>
+                                    <h3 class="product-float-title">BrutuS Pan</h3>
+                                    <p class="product-float-desc">Traditional betel leaf aromatic signature profile.
+                                    </p>
                                     <a href="#" class="product-float-btn">Bulk Batch</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-4 product-float-item"
+                    <div class="col-md-6 col-lg-4 product-float-item" data-category="signature"
                         data-name="silver mild light smooth reserve virginia gold">
                         <div class="product-float-wrap">
                             <div class="product-float-stage" onclick="window.location.href='#'">
@@ -449,21 +597,72 @@
 
     <footer class="text-white">
         <div class="container text-center">
-            <img src="image1.jpeg" alt="Logo" style="height: 50px; border-radius: 8px; margin-bottom: 20px;">
-            <p class="small text-secondary mb-0">California Tobacco Company © 2026. Consistent Excellence Since 1985.
+            <img src="assets/brutus-main-logo.jpg" alt="Logo"
+                style="height: 60px; width: auto; object-fit: contain; border-radius: 0; margin-bottom: 20px;">
+            <p class="small text-secondary mb-0">California Tobacco Company © 2026. Consistent Excellence Since
+                1985.
             </p>
         </div>
     </footer>
 
+    <!-- Official WhatsApp Floating Action Button (Blue) -->
+    <style>
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #007bff;
+            color: #FFF;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .wa-float:hover {
+            transform: scale(1.1);
+            background-color: #0056b3;
+        }
+    </style>
+    <a href="https://wa.me/917067968137" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script>
+        let currentCategory = 'all';
+
+        function setActiveCategory(category, element) {
+            currentCategory = category;
+
+            // Update UI
+            document.querySelectorAll('.collection-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+
+            filterProducts();
+        }
+
         function filterProducts() {
             const input = document.getElementById('pSearch');
-            const filter = input.value.toLowerCase();
+            const filterText = input.value.toLowerCase();
             const items = document.getElementsByClassName('product-float-item');
 
             for (let i = 0; i < items.length; i++) {
                 const name = items[i].getAttribute('data-name');
-                if (name.includes(filter)) {
+                const category = items[i].getAttribute('data-category');
+
+                const matchesText = name.includes(filterText);
+                const matchesCategory = (currentCategory === 'all' || category === currentCategory);
+
+                if (matchesText && matchesCategory) {
                     items[i].style.display = "";
                 } else {
                     items[i].style.display = "none";
