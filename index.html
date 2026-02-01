@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
         rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -37,8 +37,15 @@
 
         h1,
         h2,
-        h3,
         .brand-text {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            color: var(--dark-charcoal);
+        }
+
+        h3,
+        h4 {
             font-family: 'Playfair Display', serif;
             color: var(--dark-charcoal);
         }
@@ -73,6 +80,7 @@
             letter-spacing: 1.5px;
             margin: 0;
             color: var(--dark-charcoal);
+            font-family: 'Montserrat', sans-serif;
         }
 
         .brand-sub {
@@ -84,7 +92,10 @@
         }
 
         .nav-link {
-            color: #000 !important;
+            color: #333 !important;
+            font-weight: 400;
+            /* Lighter weight as requested */
+            font-size: 0.95rem;
         }
 
         .nav-link:hover {
@@ -96,30 +107,39 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
-            padding: 120px 0;
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+                url('https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            padding: 160px 0;
             position: relative;
         }
 
         .hero-title {
-            font-size: 4.8rem;
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 25px;
-            letter-spacing: -2px;
+            font-size: 5.5rem;
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 30px;
+            letter-spacing: -3px;
         }
 
         .hero-title span {
             color: var(--primary-gold);
+            -webkit-text-stroke: 1px var(--dark-charcoal);
         }
 
         .hero-image-3d {
             width: 100%;
             height: auto;
             border-radius: 24px;
-            box-shadow: 30px 40px 80px rgba(0, 0, 0, 0.1);
-            transform: rotateY(-15deg) rotateX(8deg);
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.2);
+            transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
             transition: var(--transition);
+        }
+
+        .hero-image-3d:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.02);
+            box-shadow: 0 70px 130px rgba(197, 160, 89, 0.25);
         }
 
         /* 3D Button */
@@ -162,6 +182,7 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            transform-style: preserve-3d;
         }
 
         .btn-whatsapp-3d::before {
@@ -220,9 +241,9 @@
             background: var(--white);
             border-radius: 24px;
             padding: 45px 30px;
-            border: 2px solid #ddd;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #eee;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             text-align: center;
             height: 100%;
             display: flex;
@@ -231,6 +252,7 @@
             justify-content: center;
             overflow: hidden;
             position: relative;
+            transform-style: preserve-3d;
         }
 
         .service-card-3d:hover .service-card-inner {
@@ -274,6 +296,19 @@
             padding: 60px;
             border-radius: 40px;
             border: 1px solid #f0f0f0;
+        }
+
+        .icon-black {
+            color: #000 !important;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3)) !important;
+        }
+
+        .delivery-stage {
+            background: #f8f9fa;
+            border-radius: 30px;
+            padding: 60px 0;
+            overflow: hidden;
+            position: relative;
         }
 
         .contact-item {
@@ -439,30 +474,410 @@
             color: var(--primary-gold);
             font-weight: 700;
         }
+
+        /* Age Verification Styles */
+        .age-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .age-card {
+            background: #111;
+            padding: 50px 40px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 480px;
+            width: 90%;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px rgba(197, 160, 89, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .age-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+
+        .age-logo {
+            height: 90px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .age-card h2 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .age-card p {
+            color: #888;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .age-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-age {
+            padding: 14px 40px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-yes {
+            background: var(--primary-gold);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.4);
+            background: #d4ae6a;
+        }
+
+        .btn-no {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-no:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .age-flash-message {
+            margin-top: 25px;
+            color: var(--primary-gold) !important;
+            font-weight: 600;
+            font-style: italic;
+            font-size: 1.1rem;
+            animation: slideUpFade 0.5s forwards;
+        }
+
+        @keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body.age-locked {
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Search Bar & Product Section Styles */
+        .search-container {
+            position: relative;
+            max-width: 450px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 10px 15px 10px 45px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: #fff;
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        /* Floating 3D Product Styles */
+        .product-float-wrap {
+            perspective: 2000px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .product-float-stage {
+            transform-style: preserve-3d;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            padding: 40px 20px;
+            cursor: pointer;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+        }
+
+        .product-float-img-box {
+            height: 380px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .product-float-stage:hover {
+            transform: rotateY(-5deg) rotateX(3deg) translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .product-float-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+            transform: translateZ(60px);
+            transition: transform 0.6s ease;
+            border-radius: 12px;
+        }
+
+        .product-float-stage:hover .product-float-img {
+            transform: translateZ(120px) scale(1.05);
+        }
+
+        .product-float-info {
+            transform: translateZ(40px);
+            opacity: 0.8;
+            transition: 0.4s ease;
+            height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            flex-grow: 1;
+        }
+
+        .product-float-stage:hover .product-float-info {
+            opacity: 1;
+            transform: translateZ(80px);
+        }
+
+        .product-float-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 0;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .product-float-tag {
+            color: var(--primary-gold);
+            font-weight: 800;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .product-float-btn {
+            background: #111111;
+            color: #ffffff !important;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transform: translateZ(20px);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .product-float-btn:hover {
+            background: var(--primary-gold);
+            color: #000000 !important;
+            transform: translateZ(50px) translateY(-5px);
+            box-shadow: 0 10px 25px rgba(197, 160, 89, 0.4);
+        }
+
+        @media (max-width: 991px) {
+            .product-float-img {
+                max-height: 300px;
+            }
+
+            .product-float-stage:hover {
+                transform: rotateY(-10deg) rotateX(5deg) translateY(-15px);
+            }
+
+            .product-float-title {
+                font-size: 1.4rem;
+            }
+        }
+
+        #no-results {
+            margin-top: 50px;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Legal Disclaimer Section */
+        .legal-disclaimer {
+            background: #f1f1f1;
+            padding: 40px 0;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            margin-top: 40px;
+        }
+
+        .legal-box {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 20px;
+        }
+
+        .legal-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legal-text {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .legal-contact {
+            background: #fff;
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            font-size: 0.85rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .legal-contact a {
+            color: var(--primary-gold);
+            text-decoration: none;
+        }
+
+        /* Alignment Fixes */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .hero-section {
+            padding-top: 160px;
+            /* Account for fixed nav */
+        }
+
+        .container {
+            max-width: 1200px;
+        }
     </style>
 </head>
 
 <body>
+    <div id="age-verification-overlay" class="age-overlay">
+        <div class="age-card">
+            <img src="image1.jpeg" alt="BrutuS Logo" class="age-logo">
+            <h2>Are you above 18+?</h2>
+            <p>To enter this site, you must be of legal smoking age in your jurisdiction.</p>
+            <div class="age-buttons">
+                <button id="age-yes" class="btn-age btn-yes">Yes, I am</button>
+                <button id="age-no" class="btn-age btn-no">No</button>
+            </div>
+            <p id="age-message" class="age-flash-message d-none">Wait, one day definitely come here..</p>
+        </div>
+    </div>
 
-    <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm py-3">
         <div class="container">
+            <!-- Left: Logo -->
             <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <img src="image1.jpeg" alt="BrutuS Logo"
-                    style="height: 65px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                <div class="brand-text-wrapper ms-3">
-                    <p class="brand-name">BRUTUS</p>
-                    <p class="brand-sub">California Tobacco Co.</p>
+                    style="height: 55px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <div class="brand-text-wrapper ms-2 d-none d-sm-block">
+                    <p class="brand-name" style="font-size: 1.2rem;">BRUTUS</p>
+                    <p class="brand-sub" style="font-size: 0.65rem;">California Tobacco Co.</p>
                 </div>
             </a>
+
+            <!-- Center: Search (Visible on Desktop) -->
+            <div class="search-container d-none d-lg-block mx-4 flex-grow-1">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="productSearch" class="search-input" placeholder="product name..">
+            </div>
+
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav gap-lg-4">
-                    <li class="nav-item"><a class="nav-link fw-bold" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link fw-bold" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link fw-bold" href="services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link fw-bold" href="#contact">Contact</a></li>
+
+            <!-- Right: Menu Links -->
+            <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
+                <ul class="navbar-nav gap-lg-3 align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Product</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                 </ul>
             </div>
         </div>
@@ -503,69 +918,252 @@
         </div>
     </section>
 
-    <!-- Services Section (Box Container) -->
-    <section id="services" class="py-5" style="background: #ffffff;">
+    <!-- Products Section -->
+    <section id="products" class="py-5" style="background: #fafafa;">
         <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="text-uppercase fw-bold letter-spacing-4 d-block mb-3"
+                    style="color: var(--primary-gold); letter-spacing: 4px;">Premium Selection</span>
+                <h2 class="display-4 fw-bold">The BrutuS Signature Lineup</h2>
+                <div class="mx-auto mt-3 mb-4" style="max-width: 600px;">
+                    <span class="badge rounded-pill px-3 py-2"
+                        style="background: rgba(220, 53, 69, 0.05); color: #dc3545; border: 1px solid rgba(220, 53, 69, 0.2); font-size: 0.7rem; letter-spacing: 0.5px; font-weight: 700;">
+                        <i class="fas fa-info-circle me-1"></i> OUR OBJECTIVE IS NOT TO SELL, JUST TO SHOWCASE OUR BRAND
+                    </span>
+                </div>
+                <div class="mx-auto" style="width: 80px; height: 3px; background: var(--primary-gold);"></div>
+            </div>
+
+            <!-- Mobile Search -->
+            <div class="d-lg-none mb-4">
+                <div class="search-container mx-auto" style="max-width: 100%;">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="productSearchMobile" class="search-input" placeholder="product name.."
+                        onfocus="window.location.href='products.html'">
+                </div>
+            </div>
+
+            <div class="row g-5 align-items-end" id="featuredProducts">
+                <!-- Featured Product 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-float-wrap">
+                        <div class="product-float-stage" onclick="window.location.href='american-red.html'">
+                            <div class="product-float-img-box">
+                                <img src="assets/products/uploaded_media_0_1769944372421.jpg" alt="American Red"
+                                    class="product-float-img">
+                            </div>
+                            <div class="product-float-info">
+                                <span class="product-float-tag">Industrial Grade</span>
+                                <h3 class="product-float-title">American Red</h3>
+                                <a href="american-red.html" class="product-float-btn">View Catalog</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Product 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-float-wrap">
+                        <div class="product-float-stage" onclick="window.location.href='products.html'">
+                            <div class="product-float-img-box">
+                                <img src="assets/products/uploaded_media_1_1769944372421.jpg" alt="Midnight Espresso"
+                                    class="product-float-img">
+                            </div>
+                            <div class="product-float-info">
+                                <span class="product-float-tag">Craft Fusion</span>
+                                <h3 class="product-float-title">Midnight Espresso</h3>
+                                <a href="products.html" class="product-float-btn">View Catalog</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Product 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-float-wrap">
+                        <div class="product-float-stage" onclick="window.location.href='products.html'">
+                            <div class="product-float-img-box">
+                                <img src="assets/products/uploaded_media_4_1769945712147.jpg" alt="Menthol Chill"
+                                    class="product-float-img">
+                            </div>
+                            <div class="product-float-info">
+                                <span class="product-float-tag">Arctic Tech</span>
+                                <h3 class="product-float-title">BrutuS Menthol</h3>
+                                <a href="products.html" class="product-float-btn">View Catalog</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="products.html" class="btn-whatsapp-3d"
+                    style="background: var(--dark-charcoal); box-shadow: 0 8px 0 #000; color: white !important; text-decoration: none; padding: 15px 40px; border-radius: 12px; font-weight: 700;">
+                    Explore Full Professional Catalog <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Disclaimer (Compliance) -->
+    <section class="legal-disclaimer">
+        <div class="container">
+            <div class="legal-box">
+                <div class="legal-title">
+                    <i class="fas fa-gavel"></i> Legal Disclaimer (Tobacco Compliance – India)
+                </div>
+                <p class="legal-text">
+                    <strong>IMPORTANT:</strong> This website is for informational and brand-showcase purposes only.
+                    <strong>Our objective is NOT to sell, advertise, or promote tobacco products.</strong> We are
+                    strictly showcasing our brand and business profile.
+                </p>
+                <p class="legal-text">
+                    The images and visuals displayed on this website are representational and <strong>do not depict
+                        the exact physical product or packaging.</strong> We strictly follow all Government of India
+                    guidelines, including COTPA 2003.
+                </p>
+                <p class="legal-text">
+                    If any individual, private body, or Government authority finds any content to be non-compliant
+                    or wrong, please contact us via email. We are committed to making immediate changes to ensure
+                    100% compliance.
+                </p>
+                <div class="legal-contact">
+                    <i class="fas fa-envelope me-2"></i> Official Communication:
+                    <a href="mailto:californiatobaccocompany@gmail.com">californiatobaccocompany@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Banner Section (Cinematic Break) -->
+    <section class="py-5"
+        style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1510200832049-74e2d3549007?auto=format&fit=crop&q=80&w=1920'); background-attachment: fixed; background-size: cover; color: white;">
+        <div class="container py-5 text-center">
+            <h2 class="display-3 fw-bold mb-4" style="font-family: 'Montserrat', sans-serif;">Crafting Legacy Since 1985
+            </h2>
+            <p class="lead mx-auto" style="max-width: 800px; opacity: 0.9;">Our process involves the finest sun-dried
+                leaves and innovative flavour science to deliver an experience that defines world-class standards.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding" style="background: #ffffff;">
+        <div class="container">
             <div class="text-center mb-5 pb-3">
                 <span class="text-uppercase fw-bold letter-spacing-4 d-block mb-3"
                     style="color: var(--primary-gold); letter-spacing: 4px;">Exclusive Services</span>
-                <h2 class="display-4 fw-bold">Built for Excellence</h2>
-                <div class="mx-auto" style="width: 80px; height: 3px; background: var(--primary-gold);"></div>
+                <h2 class="display-4 fw-bold mb-4">Industrial Standards</h2>
             </div>
             <div class="row g-4 text-center">
                 <!-- Quality -->
                 <div class="col-lg-3 col-md-6">
                     <div class="service-card-3d">
-                        <div class="service-card-inner shadow">
+                        <div class="service-card-inner">
                             <div class="service-img-wrap">
-                                <i class="fas fa-medal"
-                                    style="color: #2ecc71; filter: drop-shadow(0 10px 10px rgba(46, 204, 113, 0.3));"></i>
+                                <i class="fas fa-microscope"
+                                    style="color: var(--primary-gold); filter: drop-shadow(0 10px 10px rgba(197, 160, 89, 0.2));"></i>
                             </div>
-                            <h3 class="h5 fw-bold mb-3">Trusted Quality</h3>
-                            <p class="text-dark small mb-0">Products that meet consistent benchmarks, every time.
-                            </p>
+                            <h3 class="h5 fw-bold mb-3">Flavour Science</h3>
+                            <p class="text-secondary small mb-0">R&D labs focused on chemical-free aroma stability and
+                                perfect moisture balance.</p>
                         </div>
                     </div>
                 </div>
                 <!-- Delivery -->
                 <div class="col-lg-3 col-md-6">
-                    <div class="service-card-3d delivery-effect">
-                        <div class="service-card-inner shadow">
+                    <div class="service-card-3d">
+                        <div class="service-card-inner">
                             <div class="service-img-wrap">
-                                <i class="fas fa-truck-moving"
-                                    style="color: #e67e22; filter: drop-shadow(0 10px 10px rgba(230, 126, 34, 0.2));"></i>
+                                <i class="fas fa-boxes-packing"
+                                    style="color: var(--primary-gold); filter: drop-shadow(0 10px 10px rgba(197, 160, 89, 0.2));"></i>
                             </div>
-                            <h3 class="h5 fw-bold mb-3">Reliable Supply</h3>
-                            <p class="text-dark small mb-0">Structured logistics ensuring your orders are sent with
-                                precision.</p>
+                            <h3 class="h5 fw-bold mb-3">Bulk Efficiency</h3>
+                            <p class="text-secondary small mb-0">High-capacity automated manufacturing delivering
+                                identical quality across tons of product.</p>
                         </div>
                     </div>
                 </div>
                 <!-- Market -->
                 <div class="col-lg-3 col-md-6">
                     <div class="service-card-3d">
-                        <div class="service-card-inner shadow">
+                        <div class="service-card-inner">
                             <div class="service-img-wrap">
-                                <i class="fas fa-globe-americas"
-                                    style="color: #3498db; filter: drop-shadow(0 10px 10px rgba(52, 152, 219, 0.3));"></i>
+                                <i class="fas fa-shield-halved"
+                                    style="color: var(--primary-gold); filter: drop-shadow(0 10px 10px rgba(197, 160, 89, 0.2));"></i>
                             </div>
-                            <h3 class="h5 fw-bold mb-3">Market Expertise</h3>
-                            <p class="text-dark small mb-0">Deep industry knowledge supporting informed decisions.
-                            </p>
+                            <h3 class="h5 fw-bold mb-3">Legal Assurance</h3>
+                            <p class="text-secondary small mb-0">100% COTPA and international trade compliance
+                                management for seamless logistics.</p>
                         </div>
                     </div>
                 </div>
                 <!-- Client -->
                 <div class="col-lg-3 col-md-6">
                     <div class="service-card-3d">
-                        <div class="service-card-inner shadow">
+                        <div class="service-card-inner">
                             <div class="service-img-wrap">
-                                <i class="fas fa-users-cog"
-                                    style="color: #9b59b6; filter: drop-shadow(0 10px 10px rgba(155, 89, 182, 0.2));"></i>
+                                <i class="fas fa-flask-vial"
+                                    style="color: var(--primary-gold); filter: drop-shadow(0 10px 10px rgba(197, 160, 89, 0.2));"></i>
                             </div>
-                            <h3 class="h5 fw-bold mb-3">Client Focused</h3>
-                            <p class="text-dark small mb-0">Solutions aligned with client needs and expectations.
-                            </p>
+                            <h3 class="h5 fw-bold mb-3">Bespoke Profiles</h3>
+                            <p class="text-secondary small mb-0">Custom flavor profile development tailored for specific
+                                regional taste preferences.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Delivery Section -->
+    <section id="delivery" class="delivery-stage">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <span class="text-uppercase fw-bold letter-spacing-4 d-block mb-3"
+                        style="color: var(--primary-gold); letter-spacing: 4px;">Logistics Network</span>
+                    <h2 class="display-4 fw-bold mb-4">Fast & Reliable Global Delivery</h2>
+                    <p class="lead text-secondary mb-5">Our integrated supply chain ensures that BrutuS products reach
+                        your facility with industrial-grade efficiency, anywhere in the world.</p>
+
+                    <div class="d-flex flex-column gap-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="service-img-wrap mb-0" style="font-size: 2rem;">
+                                <i class="fas fa-truck-fast icon-black"></i>
+                            </div>
+                            <div>
+                                <h4 class="fw-bold mb-1" style="font-family: 'Montserrat', sans-serif;">Heavy-Duty
+                                    Logistics</h4>
+                                <p class="small text-secondary mb-0">Direct transport for high-volume industrial
+                                    consignments.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="service-img-wrap mb-0" style="font-size: 2rem;">
+                                <i class="fas fa-plane-up icon-black"></i>
+                            </div>
+                            <div>
+                                <h4 class="fw-bold mb-1" style="font-family: 'Montserrat', sans-serif;">Air Express
+                                    Portals</h4>
+                                <p class="small text-secondary mb-0">Rapid clearance for specialized premium reserves.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="product-float-wrap mb-0">
+                        <div class="product-float-stage">
+                            <!-- Using a cinematic logistics visual -->
+                            <div class="product-float-img-box" style="height: 400px;">
+                                <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=1200"
+                                    alt="Global Logistics" class="product-float-img"
+                                    style="filter: grayscale(0.5) contrast(1.2);">
+                            </div>
+                            <div class="product-float-info">
+                                <span class="product-float-tag">Industrial Transit</span>
+                                <h3 class="product-float-title">Global Fleet Network</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -579,7 +1177,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <h2 class="display-5 fw-bold mb-4">Why Partners Choose BrutuS?</h2>
-                    <p class="lead text-secondary mb-5">We go beyond manufacturing. We provide a partnership built on 40
+                    <p class="lead text-secondary mb-5">We go beyond manufacturing. We provide a partnership built
+                        on 40
                         years of stability and innovative flavour science.</p>
 
                     <div class="row g-4">
@@ -618,30 +1217,35 @@
                     </div>
                 </div>
                 <div class="col-lg-6 ps-lg-5">
-                    <div class="p-5 rounded-4 shadow-lg text-white" style="background: var(--dark-charcoal);">
-                        <h3 class="text-white mb-5">How It Works</h3>
-                        <div class="d-flex gap-4 mb-4">
-                            <div class="h2 text-gold">01</div>
-                            <div>
-                                <h5 class="fw-bold">Consultation</h5>
-                                <p class="small opacity-75">We discuss your market needs and required flavour profiles
-                                    via WhatsApp or Email.</p>
+                    <div class="position-relative">
+                        <img src="https://images.unsplash.com/photo-1543332164-6e82f355bab1?auto=format&fit=crop&q=80&w=800"
+                            alt="Consultation" class="img-fluid rounded-4 mb-4 shadow-lg d-none d-lg-block">
+                        <div class="p-5 rounded-4 shadow-lg text-white"
+                            style="background: var(--dark-charcoal); border-left: 5px solid var(--primary-gold);">
+                            <h3 class="text-white mb-5" style="font-family: 'Montserrat', sans-serif;">THE JOURNEY</h3>
+                            <div class="d-flex gap-4 mb-4">
+                                <div class="h2 text-gold fw-bold">01</div>
+                                <div>
+                                    <h5 class="fw-bold">Consultation</h5>
+                                    <p class="small opacity-75">We identify your regional market needs and required
+                                        flavour profiles via our digital specialist channels.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="d-flex gap-4 mb-4">
-                            <div class="h2 text-gold">02</div>
-                            <div>
-                                <h5 class="fw-bold">Crafting</h5>
-                                <p class="small opacity-75">Our specialists manufacture your branded batch using premium
-                                    sun-dried leaves.</p>
+                            <div class="d-flex gap-4 mb-4">
+                                <div class="h2 text-gold fw-bold">02</div>
+                                <div>
+                                    <h5 class="fw-bold">Crafting</h5>
+                                    <p class="small opacity-75">Our industrial R&D labs manufacture your signature batch
+                                        using premium sun-dried leaves.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="d-flex gap-4">
-                            <div class="h2 text-gold">03</div>
-                            <div>
-                                <h5 class="fw-bold">Delivery</h5>
-                                <p class="small opacity-75">Secure, standardized shipping delivers your consistent
-                                    signature product anywhere.</p>
+                            <div class="d-flex gap-4">
+                                <div class="h2 text-gold fw-bold">03</div>
+                                <div>
+                                    <h5 class="fw-bold">Standardized Flow</h5>
+                                    <p class="small opacity-75">Secure, international logistics ensures your signature
+                                        product arrives with zero profile deviation.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -716,7 +1320,8 @@
                 <div class="col-lg-4">
                     <img src="image1.jpeg" alt="BrutuS Footer Logo"
                         style="height: 80px; border-radius: 10px; margin-bottom: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.5);">
-                    <p class="text-secondary small" style="line-height: 1.8;">California Tobacco Company — Delivering
+                    <p class="text-secondary small" style="line-height: 1.8;">California Tobacco Company —
+                        Delivering
                         carefully crafted flavoured
                         tobacco, defined by consistency and control. Crafting excellence since 1985.</p>
                 </div>
@@ -727,7 +1332,8 @@
                         <li class="mb-3"><a href="services.html" class="footer-link small">Our Specialized
                                 Services</a></li>
                         <li class="mb-3"><a href="#contact" class="footer-link small">Get in Touch</a></li>
-                        <li class="mb-3"><a href="privacy-policy.html" class="footer-link small">Privacy Policy</a></li>
+                        <li class="mb-3"><a href="privacy-policy.html" class="footer-link small">Privacy Policy</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-lg-4 text-lg-end">
@@ -752,7 +1358,8 @@
                 </div>
             </div>
             <hr class="border-secondary opacity-25 my-5">
-            <p class="small text-secondary text-center mb-0">&copy; <span id="year"></span> California Tobacco Company.
+            <p class="small text-secondary text-center mb-0">&copy; <span id="year"></span> California Tobacco
+                Company.
                 All rights reserved.</p>
         </div>
     </footer>
@@ -780,6 +1387,57 @@
                 }
             });
         });
+
+        // Age Verification Logic
+        document.addEventListener('DOMContentLoaded', function () {
+            const overlay = document.getElementById('age-verification-overlay');
+            const yesBtn = document.getElementById('age-yes');
+            const noBtn = document.getElementById('age-no');
+            const message = document.getElementById('age-message');
+
+            // FOR TESTING: Clear verification to see if it shows
+            // localStorage.removeItem('ageVerified'); 
+
+            // Check if already verified
+            if (localStorage.getItem('ageVerified') === 'true') {
+                overlay.style.display = 'none';
+                document.body.classList.remove('age-locked');
+            } else {
+                overlay.style.display = 'flex'; // Ensure it's visible
+                overlay.style.opacity = '1';
+                overlay.style.visibility = 'visible';
+                document.body.classList.add('age-locked');
+            }
+
+            yesBtn.addEventListener('click', function () {
+                localStorage.setItem('ageVerified', 'true');
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                document.body.classList.remove('age-locked');
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 600);
+            });
+
+            noBtn.addEventListener('click', function () {
+                message.classList.remove('d-none');
+                yesBtn.style.opacity = '0.5';
+                yesBtn.disabled = true;
+                noBtn.style.opacity = '0.5';
+                noBtn.disabled = true;
+
+                // Redirect after showing the message
+                setTimeout(() => {
+                    if (window.history.length > 1) {
+                        window.history.back();
+                    } else {
+                        window.location.href = 'https://www.google.com';
+                    }
+                }, 2000);
+            });
+        });
+
+        // Search redirect logic is handled via inline onfocus/onkeyup for cleaner performance.
     </script>
 </body>
 

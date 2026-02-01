@@ -7,7 +7,7 @@
     <title>Our Services | BrutuS — California Tobacco Company</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -64,18 +64,55 @@
             margin-left: 10px;
         }
 
+        h1,
+        h2,
         .brand-name {
             font-size: 1.4rem;
             font-weight: 700;
-            color: #000;
+            letter-spacing: 1px;
             margin: 0;
+            color: var(--dark-charcoal);
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
         }
 
         .brand-sub {
             font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             color: var(--primary-gold);
             margin: 0;
-            text-transform: uppercase;
+        }
+
+        .nav-link {
+            color: #333 !important;
+            font-weight: 400;
+            font-size: 0.95rem;
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 450px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 10px 15px 10px 45px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
         }
 
         .section-padding {
@@ -83,30 +120,61 @@
         }
 
         .hero-mini {
-            background: #f9f9f9;
-            padding: 120px 0 60px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1510200832049-74e2d3549007?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 180px 0 100px;
             text-align: center;
+            color: white;
+        }
+
+        .hero-mini h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
         }
 
         .service-box {
             background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 45px 30px;
+            border-radius: 0;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
             height: 100%;
-            border: 2px solid #ddd;
-            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-box::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: var(--primary-gold);
+            transition: 0.4s ease;
         }
 
         .service-box:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
             border-color: var(--primary-gold);
         }
 
+        .service-box:hover::after {
+            width: 100%;
+        }
+
         .service-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--primary-gold);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            display: inline-block;
         }
 
         footer {
@@ -130,29 +198,180 @@
         .hover-gold:hover {
             color: var(--primary-gold) !important;
         }
+
+        /* Age Verification Styles */
+        .age-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .age-card {
+            background: #111;
+            padding: 50px 40px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 480px;
+            width: 90%;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px rgba(197, 160, 89, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .age-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+
+        .age-logo {
+            height: 90px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .age-card h2 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .age-card p {
+            color: #888;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .age-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-age {
+            padding: 14px 40px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-yes {
+            background: var(--primary-gold);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.4);
+            background: #d4ae6a;
+        }
+
+        .btn-no {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-no:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .age-flash-message {
+            margin-top: 25px;
+            color: var(--primary-gold) !important;
+            font-weight: 600;
+            font-style: italic;
+            font-size: 1.1rem;
+            animation: slideUpFade 0.5s forwards;
+        }
+
+        @keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body.age-locked {
+            overflow: hidden;
+            height: 100vh;
+        }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <div id="age-verification-overlay" class="age-overlay">
+        <div class="age-card">
+            <img src="image1.jpeg" alt="BrutuS Logo" class="age-logo">
+            <h2>Are you above 18+?</h2>
+            <p>To enter this site, you must be of legal smoking age in your jurisdiction.</p>
+            <div class="age-buttons">
+                <button id="age-yes" class="btn-age btn-yes">Yes, I am</button>
+                <button id="age-no" class="btn-age btn-no">No</button>
+            </div>
+            <p id="age-message" class="age-flash-message d-none">Wait, one day definitely come here..</p>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm py-3">
         <div class="container">
+            <!-- Left: Logo -->
             <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="image1.jpeg" alt="Logo"
-                    style="height: 65px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                <div class="brand-text-wrapper ms-3">
-                    <p class="brand-name">BRUTUS</p>
-                    <p class="brand-sub">California Tobacco Co.</p>
+                <img src="image1.jpeg" alt="BrutuS Logo"
+                    style="height: 55px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <div class="brand-text-wrapper ms-2 d-none d-sm-block">
+                    <p class="brand-name" style="font-size: 1.2rem;">BRUTUS</p>
+                    <p class="brand-sub" style="font-size: 0.65rem;">California Tobacco Co.</p>
                 </div>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+            <!-- Center: Search -->
+            <div class="search-container d-none d-lg-block mx-4 flex-grow-1">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="product name.."
+                    onfocus="window.location.href='products.html'">
+            </div>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav gap-lg-4">
-                    <li class="nav-item"><a class="nav-link fw-bold" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link fw-bold" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link fw-bold active" href="services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link fw-bold" href="index.html#contact">Contact</a></li>
+
+            <!-- Right: Menu Links -->
+            <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
+                <ul class="navbar-nav gap-lg-3 align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Product</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                 </ul>
             </div>
         </div>
@@ -160,8 +379,9 @@
 
     <header class="hero-mini">
         <div class="container">
-            <h1 class="display-3 fw-bold">Our Services</h1>
-            <p class="lead">Excellence in Every Step of the Process.</p>
+            <h1 class="display-2 mb-3">Global Infrastructure</h1>
+            <p class="lead text-uppercase fw-bold letter-spacing-4"
+                style="letter-spacing: 4px; color: var(--primary-gold);">Precision & Stability</p>
         </div>
     </header>
 
@@ -170,41 +390,34 @@
             <div class="row g-4">
                 <div class="col-lg-6">
                     <div class="service-box">
-                        <div class="service-icon"><i class="fas fa-gem" style="color: #2ecc71;"></i></div>
-                        <h3>Trusted Quality</h3>
-                        <p class="text-dark">Our products meet consistent benchmarks, every time. We ensure that every
-                            flavoured tobacco
-                            product we deliver adheres to the highest industry standards of purity and taste
-                            consistency.</p>
+                        <div class="service-icon"><i class="fas fa-microscope"></i></div>
+                        <h3 class="fw-bold mb-3" style="font-family: 'Montserrat', sans-serif;">FLAVOUR R&D</h3>
+                        <p class="text-secondary">Our labs focus on aroma stability and chemical-free preservation. We
+                            ensure every signature blend maintains its profile for over 24 months of shelf life.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="service-box">
-                        <div class="service-icon"><i class="fas fa-network-wired" style="color: #e67e22;"></i></div>
-                        <h3>Reliable Supply Chain</h3>
-                        <p class="text-dark">Structured systems ensuring uninterrupted availability. Our global
-                            distribution network is
-                            designed to maintain product integrity and provide timely delivery to our partners
-                            worldwide.</p>
+                        <div class="service-icon"><i class="fas fa-industry"></i></div>
+                        <h3 class="fw-bold mb-3" style="font-family: 'Montserrat', sans-serif;">MASS MANUFACTURING</h3>
+                        <p class="text-secondary">With high-capacity automated production lines, we deliver multi-ton
+                            orders with identical quality across every single pouch or gram produced.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="service-box">
-                        <div class="service-icon"><i class="fas fa-chart-bar" style="color: #3498db;"></i></div>
-                        <h3>Market Expertise</h3>
-                        <p class="text-dark">Deep industry knowledge supporting informed decisions. With over 40 years
-                            in the business, we
-                            provide the insights needed to navigate complex market demands and set new benchmarks.</p>
+                        <div class="service-icon"><i class="fas fa-box-open"></i></div>
+                        <h3 class="fw-bold mb-3" style="font-family: 'Montserrat', sans-serif;">EXPORT LOGISTICS</h3>
+                        <p class="text-secondary">We manage specialized moisture-controlled shipping and international
+                            compliance documentation to ensure zero delays at borders.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="service-box">
-                        <div class="service-icon"><i class="fas fa-users-cog" style="color: #9b59b6;"></i></div>
-                        <h3>Client-Focused Approach</h3>
-                        <p class="text-dark">Solutions aligned with client needs and expectations. We also offer
-                            customized flavour
-                            solutions to meet specific market demands, ensuring your unique requirements are met with
-                            precision.</p>
+                        <div class="service-icon"><i class="fas fa-handshake"></i></div>
+                        <h3 class="fw-bold mb-3" style="font-family: 'Montserrat', sans-serif;">PRIVATE LABELING</h3>
+                        <p class="text-secondary">Create your own brand with our premium reserve leaves. We provide the
+                            base, the science, and the consistency—you provide the vision.</p>
                     </div>
                 </div>
             </div>
@@ -267,6 +480,49 @@
                 if (navbarCollapse.classList.contains('show')) {
                     new bootstrap.Collapse(navbarCollapse).hide();
                 }
+            });
+        });
+
+        // Age Verification Logic
+        document.addEventListener('DOMContentLoaded', function () {
+            const overlay = document.getElementById('age-verification-overlay');
+            const yesBtn = document.getElementById('age-yes');
+            const noBtn = document.getElementById('age-no');
+            const message = document.getElementById('age-message');
+
+            // Check if already verified
+            if (localStorage.getItem('ageVerified') === 'true') {
+                overlay.style.display = 'none';
+                document.body.classList.remove('age-locked');
+            } else {
+                document.body.classList.add('age-locked');
+            }
+
+            yesBtn.addEventListener('click', function () {
+                localStorage.setItem('ageVerified', 'true');
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                document.body.classList.remove('age-locked');
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 600);
+            });
+
+            noBtn.addEventListener('click', function () {
+                message.classList.remove('d-none');
+                yesBtn.style.opacity = '0.5';
+                yesBtn.disabled = true;
+                noBtn.style.opacity = '0.5';
+                noBtn.disabled = true;
+
+                // Redirect after showing the message
+                setTimeout(() => {
+                    if (window.history.length > 1) {
+                        window.history.back();
+                    } else {
+                        window.location.href = 'https://www.google.com';
+                    }
+                }, 2000);
             });
         });
     </script>
