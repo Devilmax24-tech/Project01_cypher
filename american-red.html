@@ -18,16 +18,20 @@
         :root {
             --primary-gold: #C5A059;
             --dark-charcoal: #121212;
-            --whatsapp-green: #25D366;
+            --deep-bg: #1a1a1a;
+            --body-text: #e0e0e0;
             --white: #FFFFFF;
-            --bg-light: #f8f9fa;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--dark-charcoal);
-            background: var(--white);
+            background-color: var(--dark-charcoal);
+            color: var(--body-text);
+            overflow-x: hidden;
         }
+
 
         h1,
         h2,
@@ -38,39 +42,45 @@
 
         /* Hero Section */
         .product-hero {
-            padding: 120px 0 80px;
-            background: radial-gradient(circle at center, #ffffff 0%, #f2f2f2 100%);
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
             text-align: center;
             overflow: hidden;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
 
         .product-name {
-            font-size: 4.5rem;
-            font-weight: 900;
+            font-size: 5rem;
+            font-weight: 950;
             letter-spacing: -2px;
             margin-bottom: 20px;
-            color: var(--dark-charcoal);
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
         }
 
         .product-tagline {
             font-size: 1.5rem;
             color: var(--primary-gold);
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 40px;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
         }
 
         .product-main-img {
-            max-width: 600px;
+            max-width: 650px;
             width: 100%;
             height: auto;
-            filter: drop-shadow(0 50px 100px rgba(0, 0, 0, 0.15));
-            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            filter: drop-shadow(0 50px 100px rgba(0, 0, 0, 0.5));
+            transition: var(--transition);
             margin: 40px 0;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
         }
 
         .product-main-img:hover {
-            transform: scale(1.05) rotateY(10deg);
+            transform: scale(1.05) rotateY(-5deg);
+            border-color: var(--primary-gold);
         }
 
         /* WhatsApp Button */
@@ -100,222 +110,288 @@
         /* Features Section */
         .features-section {
             padding: 100px 0;
-            background: var(--white);
-        }
-
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            max-width: 700px;
-            margin: 0 auto;
+            background: var(--deep-bg);
         }
 
         .feature-item {
-            padding: 20px;
+            padding: 25px;
             margin-bottom: 20px;
-            background: var(--bg-light);
+            background: rgba(255, 255, 255, 0.03);
             border-left: 5px solid var(--primary-gold);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 600;
+            color: var(--white);
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
+            border-radius: 0 15px 15px 0;
+            transition: var(--transition);
         }
 
-        .feature-item i {
-            color: var(--primary-gold);
-            font-size: 1.5rem;
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(10px);
         }
 
-        /* Reviews Section */
         .reviews-section {
-            padding: 80px 0;
-            background: var(--bg-light);
+            padding: 100px 0;
+            background: var(--dark-charcoal);
         }
 
         .review-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 45px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             height: 100%;
+            transition: var(--transition);
         }
 
-        .review-text {
-            font-style: italic;
-            color: #555;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            line-height: 1.6;
+        .review-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary-gold);
+            transform: translateY(-10px);
         }
 
-        .review-author {
-            font-weight: 700;
-            color: var(--dark-charcoal);
-        }
-
-        /* Price Tag */
         .price-tag {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--dark-charcoal);
-            margin-bottom: 30px;
+            font-size: 3rem;
+            font-weight: 950;
+            color: var(--primary-gold);
+            font-family: 'Montserrat', sans-serif;
         }
 
-        .price-tag span {
-            font-size: 1rem;
-            color: #888;
-            font-weight: 400;
+        .navbar {
+            background-color: rgba(18, 18, 18, 0.95) !important;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 15px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-gold) !important;
+        }
+
+        .search-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 8px;
+            padding: 10px 15px 10px 45px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-gold);
+            z-index: 5;
         }
 
         @media (max-width: 768px) {
             .product-name {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+                letter-spacing: -1px;
             }
 
             .product-tagline {
-                font-size: 1.1rem;
+                font-size: 1rem;
+                letter-spacing: 2px;
+            }
+
+            .price-tag {
+                font-size: 2rem;
+            }
+
+            .product-hero {
+                padding: 120px 0 60px;
             }
         }
     </style>
 </head>
 
-<body>
-
-    <!-- Top Section -->
-    <section class="product-hero">
-        <div class="container">
-            <h1 class="product-name">BrutuS American Red</h1>
-            <p class="product-tagline">THE SIGNATURE OF STRENGTH & REFINED TASTE</p>
-
-            <p class="lead mx-auto text-secondary mb-4" style="max-width: 800px;">
-                Crafted for industrial excellence, our American Red blend delivers a consistent, robust profile that has
-                defined the gold standard for over four decades.
-            </p>
-
-            <div class="price-tag">
-                Inquire for Pricing <span>(Industrial Bulk Orders Only)</span>
+<nav class="navbar navbar-expand-lg fixed-top py-3">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="assets/brutus-main-logo.jpg" alt="BrutuS Logo"
+                style="height: 60px; width: auto; object-fit: contain; border: 2px solid white; border-radius: 8px;">
+            <div class="d-none d-sm-flex flex-column ms-3" style="line-height: 1.1;">
+                <span class="fw-bold text-uppercase text-white"
+                    style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; letter-spacing: 1.5px;">BrutuS</span>
+                <span class="text-secondary text-uppercase"
+                    style="font-size: 0.6rem; letter-spacing: 1px; font-weight: 600; color: var(--primary-gold) !important;">California
+                    Tobacco
+                    Company</span>
             </div>
+        </a>
 
-            <img src="assets/products/uploaded_media_0_1769944372421.jpg" alt="BrutuS American Red"
-                class="product-main-img">
-
-            <div class="mt-4">
-                <a href="https://wa.me/917067968137?text=I%20want%20to%20buy%20BrutuS%20American%20Red"
-                    class="btn-whatsapp-buy">
-                    <i class="fab fa-whatsapp"></i> Buy on WhatsApp
-                </a>
-            </div>
+        <div class="search-container d-none d-lg-block mx-5 flex-grow-1 position-relative">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="Search premium catalog.."
+                onclick="window.location.href='products.html'">
         </div>
-    </section>
 
-    <!-- Benefits Section -->
-    <section class="features-section">
-        <div class="container">
-            <h2 class="text-center mb-5">Main Benefits</h2>
-            <ul class="feature-list">
-                <li class="feature-item">
-                    <i class="fas fa-check-circle"></i> 40+ Years of Consistent Industrial Blend Quality
-                </li>
-                <li class="feature-item">
-                    <i class="fas fa-check-circle"></i> Premium Sun-Dried Virginia Leaves for Rich Aroma
-                </li>
-                <li class="feature-item">
-                    <i class="fas fa-check-circle"></i> Precision Moisture levels for Export-Standard Longevity
-                </li>
-                <li class="feature-item">
-                    <i class="fas fa-check-circle"></i> Licensed and COTPA 2003 Compliant Manufacturing
-                </li>
+        <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
+            <ul class="navbar-nav gap-lg-3 align-items-center">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active fw-bold" href="products.html">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
             </ul>
         </div>
-    </section>
+    </div>
+</nav>
+<section class="product-hero">
+    <div class="container">
+        <h1 class="product-name">American Red</h1>
+        <p class="product-tagline">California Strength & Refined Taste</p>
 
-    <!-- Reviews Section -->
-    <section class="reviews-section">
-        <div class="container">
-            <h2 class="text-center mb-5">Customer Reviews</h2>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-5">
-                    <div class="review-card">
-                        <div class="mb-3 text-warning">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="review-text">"The consistency of the American Red blend is unmatched. We haven't seen
-                            a single deviation in profile across ten bulk shipments."</p>
-                        <p class="review-author">— International Logistics Manager</p>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="review-card">
-                        <div class="mb-3 text-warning">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="review-text">"Our regional distributors prefer BrutuS over luxury competitors purely
-                            because of the classic, robust hit and aroma stability."</p>
-                        <p class="review-author">— Wholesale Partner, South-East Asia</p>
-                    </div>
-                </div>
-            </div>
+        <p class="lead mx-auto mb-5" style="max-width: 850px; color: #aaa; font-size: 1.2rem; line-height: 1.8;">
+            Crafted for industrial excellence, our American Red blend delivers a consistent, robust profile that has
+            defined the global standard for decades.
+        </p>
+
+        <div class="price-tag mb-5">
+            Industrial Inquiry <span>(Bulk Orders)</span>
         </div>
-    </section>
 
-    <!-- Bottom Action -->
-    <section class="py-5 text-center">
-        <div class="container">
-            <h3 class="mb-4">Ready to Elevate Your Inventory?</h3>
+        <img src="assets/products/uploaded_media_0_1769944372421.jpg" alt="BrutuS American Red"
+            class="product-main-img">
+
+        <div class="mt-5">
             <a href="https://wa.me/917067968137?text=I%20want%20to%20buy%20BrutuS%20American%20Red"
                 class="btn-whatsapp-buy">
-                <i class="fab fa-whatsapp"></i> Buy on WhatsApp Now
+                <i class="fab fa-whatsapp"></i> Order Professional Batch
             </a>
-            <div class="mt-4">
-                <a href="products.html" class="text-secondary text-decoration-none small">
-                    <i class="fas fa-arrow-left me-1"></i> Back to Professional Catalog
-                </a>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="features-section">
+    <div class="container">
+        <h2 class="text-center mb-5">Main Benefits</h2>
+        <ul class="feature-list">
+            <li class="feature-item">
+                <i class="fas fa-check-circle"></i> 40+ Years of Consistent Industrial Blend Quality
+            </li>
+            <li class="feature-item">
+                <i class="fas fa-check-circle"></i> Premium Sun-Dried Virginia Leaves for Rich Aroma
+            </li>
+            <li class="feature-item">
+                <i class="fas fa-check-circle"></i> Precision Moisture levels for Export-Standard Longevity
+            </li>
+            <li class="feature-item">
+                <i class="fas fa-check-circle"></i> Licensed and COTPA 2003 Compliant Manufacturing
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- Reviews Section -->
+<section class="reviews-section">
+    <div class="container">
+        <h2 class="text-center mb-5">Customer Reviews</h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-5">
+                <div class="review-card">
+                    <div class="mb-3 text-warning">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"The consistency of the American Red blend is unmatched. We haven't seen
+                        a single deviation in profile across ten bulk shipments."</p>
+                    <p class="review-author">— International Logistics Manager</p>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="review-card">
+                    <div class="mb-3 text-warning">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Our regional distributors prefer BrutuS over luxury competitors purely
+                        because of the classic, robust hit and aroma stability."</p>
+                    <p class="review-author">— Wholesale Partner, South-East Asia</p>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Include Age Verification Script (Copied for consistency) -->
+<!-- Bottom Action -->
+<section class="py-5 text-center">
+    <div class="container">
+        <h3 class="mb-4">Ready to Elevate Your Inventory?</h3>
+        <a href="https://wa.me/917067968137?text=I%20want%20to%20buy%20BrutuS%20American%20Red"
+            class="btn-whatsapp-buy">
+            <i class="fab fa-whatsapp"></i> Buy on WhatsApp Now
+        </a>
+        <div class="mt-4">
+            <a href="products.html" class="text-secondary text-decoration-none small">
+                <i class="fas fa-arrow-left me-1"></i> Back to Professional Catalog
+            </a>
+        </div>
+    </div>
+</section>
 
-    <!-- Official WhatsApp Floating Action Button (Blue) -->
-    <style>
-        .wa-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #007bff;
-            color: #FFF;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 3px #999;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+<!-- Include Age Verification Script (Copied for consistency) -->
+
+<!-- Official WhatsApp Floating Action Button (Gold/White) -->
+<style>
+    .wa-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #25D366;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        border: 2px solid white;
+    }
+
+    .wa-float:hover {
+        transform: scale(1.1);
+        background-color: #128C7E;
+        color: white;
+    }
+</style>
+<a href="https://wa.me/917067968137" class="wa-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (localStorage.getItem('ageVerified') !== 'true') {
+            window.location.href = 'index.html'; // Redirect to home if not verified
         }
-
-        .wa-float:hover {
-            transform: scale(1.1);
-            background-color: #0056b3;
-        }
-    </style>
-    <a href="https://wa.me/917067968137" class="wa-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            if (localStorage.getItem('ageVerified') !== 'true') {
-                window.location.href = 'index.html'; // Redirect to home if not verified
-            }
-        });
-    </script>
+    });
+</script>
 
 </body>
 

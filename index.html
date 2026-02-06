@@ -18,17 +18,19 @@
     <style>
         :root {
             --primary-gold: #C5A059;
-            --dark-charcoal: #0a0a0a;
-            --body-text: #4a4a4a;
+            --dark-charcoal: #121212;
+            --deep-bg: #1a1a1a;
+            --body-text: #e0e0e0;
             --white: #FFFFFF;
-            --glass-bg: rgba(255, 255, 255, 0.9);
+            --glass-bg: rgba(255, 255, 255, 0.05);
             --transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --primary-red: #dc3545;
+            --primary-red: #8b0000;
+            --accent-gradient: linear-gradient(135deg, #2a0a0a 0%, #1a1a1a 50%, #2a2a0a 100%);
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--white);
+            background-color: var(--dark-charcoal);
             color: var(--body-text);
             overflow-x: hidden;
             scroll-behavior: smooth;
@@ -61,10 +63,10 @@
 
         /* Navigation Upgrade - SmokeKing Style */
         .navbar {
-            background-color: #ffffff;
-            border-bottom: 1px solid #e1e1e1;
+            background-color: rgba(18, 18, 18, 0.95) !important;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
             padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            backdrop-filter: blur(10px);
         }
 
         .navbar .container {
@@ -249,7 +251,7 @@
             font-size: 6.5rem;
             line-height: 0.85;
             margin-bottom: 35px;
-            color: var(--dark-charcoal);
+            color: var(--white);
         }
 
         .hero-title span {
@@ -287,10 +289,11 @@
         .hero-image-3d {
             width: 100%;
             border-radius: 40px;
-            box-shadow: 0 80px 150px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 80px 150px rgba(0, 0, 0, 0.5);
             transform: perspective(2000px) rotateY(-10deg) rotateX(4deg);
             transition: var(--transition);
             animation: float3d 6s ease-in-out infinite;
+            border: 4px solid white;
         }
 
         @keyframes float3d {
@@ -329,7 +332,13 @@
         }
 
         .tg-color {
-            color: var(--telegram-blue) !important;
+            color: #0088cc !important;
+        }
+
+        /* Update Telegram/Blue colors to deep grey/gold */
+        .tg-color,
+        .mail-color {
+            color: var(--primary-gold) !important;
         }
 
         .mail-color {
@@ -498,23 +507,7 @@
         }
 
         /* Floating WA */
-        .wa-float {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 70px;
-            height: 70px;
-            background: var(--whatsapp-green);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: var(--transition);
-        }
+
 
         /* Footer */
         footer {
@@ -540,8 +533,7 @@
         }
 
         .footer-link {
-            color: #3498db !important;
-            /* Professional Blue */
+            color: var(--primary-gold) !important;
             text-decoration: none;
             transition: var(--transition);
         }
@@ -856,13 +848,14 @@
         }
 
         .product-float-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+            width: 280px;
+            height: 350px;
+            object-fit: cover;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
             transform: translateZ(60px);
             transition: transform 0.6s ease;
             border-radius: 12px;
+            border: 4px solid white;
         }
 
         .product-float-stage:hover .product-float-img {
@@ -889,7 +882,7 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
             font-size: 1.8rem;
-            color: var(--dark-charcoal);
+            color: var(--white);
             margin-bottom: 0;
             text-transform: uppercase;
             letter-spacing: -1px;
@@ -1001,6 +994,46 @@
             text-decoration: none;
         }
 
+        /* Background Transition Effect */
+        body {
+            transition: background-color 1.5s ease;
+        }
+
+        .section-dark-red {
+            background-color: #1a0505 !important;
+        }
+
+        .section-dark-gold {
+            background-color: #1a1a05 !important;
+        }
+
+        .reveal.reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .reveal.reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal.reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        .reveal.reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* SVG Dividers */
+        .svg-divider {
+            fill: var(--dark-charcoal);
+            width: 100%;
+            height: 50px;
+        }
+
         /* Alignment Fixes */
         .section-padding {
             padding: 100px 0;
@@ -1032,18 +1065,19 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-white p-0 shadow-sm">
+    <nav class="navbar navbar-expand-lg fixed-top bg-dark p-0 shadow-sm">
         <div class="container-fluid px-lg-4 py-2">
 
             <!-- 1. Logo & Brand Name -->
             <a class="navbar-brand d-flex align-items-center me-3" href="index.html">
                 <img src="assets/brutus-main-logo.jpg" alt="BrutuS Logo"
-                    style="height: 50px; width: auto; object-fit: contain;">
+                    style="height: 50px; width: auto; object-fit: contain; border: 2px solid white; border-radius: 5px;">
                 <div class="d-none d-sm-flex flex-column ms-2" style="line-height: 1.1;">
-                    <span class="fw-bold text-uppercase text-dark"
+                    <span class="fw-bold text-uppercase text-white"
                         style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; letter-spacing: 1px;">BrutuS</span>
                     <span class="text-secondary text-uppercase"
-                        style="font-size: 0.55rem; letter-spacing: 0.5px; font-weight: 600;">California Tobacco
+                        style="font-size: 0.55rem; letter-spacing: 0.5px; font-weight: 600; color: #aaa !important;">California
+                        Tobacco
                         Company</span>
                 </div>
             </a>
@@ -1103,7 +1137,7 @@
     <style>
         .nav-link-custom {
             text-decoration: none;
-            color: #333;
+            color: #eee;
             padding: 8px 12px;
             position: relative;
             transition: all 0.3s ease;
@@ -1148,22 +1182,265 @@
         }
     </style>
 
-    <!-- NEW HERO SECTION (REPLACED) -->
+
+    <!-- ENHANCED HERO SECTION WITH AUTOMATIC ANIMATIONS -->
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes floatImage {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotateY(-5deg) rotateX(5deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotateY(5deg) rotateX(-5deg);
+            }
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(197, 160, 89, 0.8);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        @keyframes rotateGlow {
+            0% {
+                filter: drop-shadow(0 0 20px rgba(197, 160, 89, 0.3));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 40px rgba(197, 160, 89, 0.6));
+            }
+
+            100% {
+                filter: drop-shadow(0 0 20px rgba(197, 160, 89, 0.3));
+            }
+        }
+
+        .hero-badge {
+            animation: revealUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+        }
+
+        .hero-title {
+            animation: revealRight 1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s both;
+        }
+
+        .hero-subtitle {
+            animation: revealRight 1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.4s both;
+        }
+
+        .hero-description {
+            animation: revealUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.6s both;
+        }
+
+        .hero-stats {
+            animation: revealUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.8s both;
+        }
+
+        .hero-image-animated {
+            animation: revealScale 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s both, floatImage 8s ease-in-out 1.2s infinite;
+            will-change: transform, opacity;
+        }
+
+        @keyframes revealUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes revealRight {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes revealScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8) rotateY(-20deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) rotateY(-5deg);
+            }
+        }
+
+        /* Scroll Reveal Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .reveal.active .stagger-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-item:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-item:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-item:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-item:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #C5A059 0%, #f4d47c 50%, #C5A059 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+
+        .floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(197, 160, 89, 0.3);
+            border-radius: 50%;
+            animation: floatParticle 15s infinite;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+    </style>
+
     <div
-        style="margin-top: 130px; background: linear-gradient(135deg, #111 0%, #2a2a2a 100%); min-height: 85vh; display: flex; align-items: center; position: relative; overflow: hidden;">
-        <div class="container py-5">
+        style="margin-top: 55px; background: #000; min-height: 85vh; display: flex; align-items: center; position: relative; overflow: hidden;">
+
+        <!-- Video Background -->
+        <video autoplay muted loop playsinline
+            style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: 1; transform: translate(-50%, -50%); opacity: 0.4; filter: contrast(120%) brightness(80%);">
+            <source
+                src="https://assets.mixkit.co/videos/preview/mixkit-smoke-drifting-on-a-black-background-472-large.mp4"
+                type="video/mp4">
+        </video>
+
+        <!-- Floating Particles Background -->
+        <div class="floating-particles">
+            <div class="particle" style="width: 4px; height: 4px; left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="width: 6px; height: 6px; left: 20%; animation-delay: 2s;"></div>
+            <div class="particle" style="width: 3px; height: 3px; left: 30%; animation-delay: 4s;"></div>
+            <div class="particle" style="width: 5px; height: 5px; left: 40%; animation-delay: 1s;"></div>
+            <div class="particle" style="width: 4px; height: 4px; left: 50%; animation-delay: 3s;"></div>
+            <div class="particle" style="width: 6px; height: 6px; left: 60%; animation-delay: 5s;"></div>
+            <div class="particle" style="width: 3px; height: 3px; left: 70%; animation-delay: 2.5s;"></div>
+            <div class="particle" style="width: 5px; height: 5px; left: 80%; animation-delay: 4.5s;"></div>
+            <div class="particle" style="width: 4px; height: 4px; left: 90%; animation-delay: 1.5s;"></div>
+        </div>
+
+        <div class="container py-5" style="position: relative; z-index: 2;">
             <div class="row align-items-center">
                 <!-- Text Content (Left) -->
-                <div class="col-lg-5 mb-5 mb-lg-0 z-index-2 text-white">
-                    <span class="badge bg-gold text-dark fw-bold mb-3 px-3 py-2 text-uppercase"
+                <div class="col-lg-5 mb-5 mb-lg-0 text-white">
+                    <span class="badge bg-gold text-dark fw-bold mb-3 px-3 py-2 text-uppercase hero-badge"
                         style="letter-spacing: 2px; background-color: #C5A059;">Product | Est. 1985</span>
-                    <h1 class="display-1 fw-bold mb-0"
-                        style="font-family: 'Playfair Display', serif; color: #C5A059; line-height: 1;">BrutuS</h1>
-                    <h2 class="h3 fw-light text-uppercase mb-4"
+
+                    <h1 class="display-1 fw-bold mb-0 hero-title gradient-text"
+                        style="font-family: 'Playfair Display', serif; line-height: 1;">BrutuS</h1>
+
+                    <h2 class="h3 fw-light text-uppercase mb-4 hero-subtitle"
                         style="font-family: 'Montserrat', sans-serif; letter-spacing: 3px; opacity: 0.9;">California
                         Tobacco Company</h2>
 
-                    <p class="lead mb-4"
+                    <p class="lead mb-4 hero-description"
                         style="margin-top: 30px; line-height: 1.8; color: #e0e0e0; font-size: 1.25rem;">
                         Delivering carefully crafted flavoured tobacco, defined by <span
                             class="fw-bold text-white">consistency</span> and <span
@@ -1171,7 +1448,7 @@
                         We also offer customized flavour solutions to meet specific market demands.
                     </p>
 
-                    <div class="d-flex align-items-center gap-3 mt-5">
+                    <div class="d-flex align-items-center gap-3 mt-5 hero-stats">
                         <div class="d-flex flex-column border-start ps-4" style="border-color: #C5A059 !important;">
                             <span class="h2 fw-bold mb-0" style="color: #C5A059;">40+</span>
                             <span class="small text-uppercase text-white-50 ms-1" style="letter-spacing: 1px;">Years in
@@ -1180,50 +1457,40 @@
                     </div>
                 </div>
 
-                <!-- 3D Image Showcase (Right) - LARGER -->
-                <div class="col-lg-7 position-relative perspective-container" style="perspective: 1200px;">
-                    <div class="hero-image-wrapper" id="hero3D"
-                        style="transform-style: preserve-3d; transition: transform 0.1s ease-out;">
-                        <img src="assets/brutus-hero-collage.png" alt="BrutuS Smoking Profiles"
-                            class="img-fluid rounded-4 shadow-lg"
-                            style="transform: rotateY(-10deg) rotateX(5deg); box-shadow: 0 25px 50px rgba(0,0,0,0.5); width: 100%; border: 1px solid rgba(255,255,255,0.1);">
+                <!-- Layered Image Showcase (Right) -->
+                <div class="col-lg-7 position-relative" style="perspective: 2000px; padding-top: 50px;">
+                    <div class="hero-image-wrapper" style="transform-style: preserve-3d; margin-top: 50px;">
+                        <!-- Main Product Collage with Layered Animation -->
+                        <div class="position-relative hero-image-animated" style="transform-style: preserve-3d;">
+                            <img src="assets/premium-tobacco-leaves.png" alt="BrutuS Smoking Profiles"
+                                class="img-fluid rounded-4 shadow-lg"
+                                style="box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 50px rgba(197,160,89,0.3); width: 100%; border: 4px solid white; transform: translateZ(50px);">
+                        </div>
                     </div>
                     <!-- Decorative Background Element -->
                     <div class="position-absolute top-50 start-50 translate-middle"
-                        style="width: 120%; height: 120%; background: radial-gradient(circle, rgba(197,160,89,0.15) 0%, rgba(0,0,0,0) 70%); z-index: -1; pointer-events: none;">
+                        style="width: 130%; height: 130%; background: radial-gradient(circle, rgba(197,160,89,0.2) 0%, rgba(0,0,0,0) 70%); z-index: -1; pointer-events: none; animation: pulseGlow 4s ease-in-out infinite;">
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Background Overlay -->
+        <!-- Enhanced Background Overlay -->
         <div
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://www.transparenttextures.com/patterns/cubes.png'); opacity: 0.05; pointer-events: none;">
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://www.transparenttextures.com/patterns/cubes.png'); opacity: 0.03; pointer-events: none;">
         </div>
     </div>
-
-    <!-- Script for 3D Tilt Effect -->
-    <script>
-        document.addEventListener('mousemove', function (e) {
-            const hero = document.getElementById('hero3D');
-            if (hero && window.innerWidth > 991) {
-                let xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-                let yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-                hero.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-            }
-        });
-    </script>
 
     <!-- Hero Section -->
 
 
     <!-- Products Section -->
-    <section id="products" class="py-5" style="background: #fafafa;">
+    <section id="products" class="py-5 reveal" style="background: var(--deep-bg);">
         <div class="container py-5">
-            <div class="text-center mb-5">
+            <div class="text-center mb-5 reveal">
                 <span class="text-uppercase fw-bold letter-spacing-4 d-block mb-3"
                     style="color: var(--primary-gold); letter-spacing: 4px;">Premium Selection</span>
-                <h2 class="display-4 fw-bold">The BrutuS Signature Lineup</h2>
+                <h2 class="display-4 fw-bold text-white">The BrutuS Signature Lineup</h2>
                 <div class="mx-auto" style="width: 80px; height: 3px; background: var(--primary-gold);"></div>
             </div>
 
@@ -1238,7 +1505,7 @@
 
             <div class="row g-5 align-items-end" id="featuredProducts">
                 <!-- Featured Product 1 -->
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 reveal reveal-left">
                     <div class="product-float-wrap">
                         <div class="product-float-stage" onclick="window.location.href='american-red.html'">
                             <div class="product-float-img-box">
@@ -1255,7 +1522,7 @@
                 </div>
 
                 <!-- Featured Product 2 -->
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 reveal">
                     <div class="product-float-wrap">
                         <div class="product-float-stage" onclick="window.location.href='products.html'">
                             <div class="product-float-img-box">
@@ -1272,7 +1539,7 @@
                 </div>
 
                 <!-- Featured Product 3 -->
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 reveal reveal-right">
                     <div class="product-float-wrap">
                         <div class="product-float-stage" onclick="window.location.href='products.html'">
                             <div class="product-float-img-box">
@@ -1364,77 +1631,76 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section-padding position-relative" style="overflow: hidden;">
-        <!-- Background Image Layer -->
+    <section id="services" class="section-padding position-relative reveal" style="overflow: hidden;">
+        <!-- Video Background Layer -->
+        <video autoplay muted loop playsinline
+            style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: 0; transform: translate(-50%, -50%); opacity: 0.15; filter: grayscale(100%) contrast(120%);">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-working-in-a-mechanic-workshop-41617-large.mp4"
+                type="video/mp4">
+        </video>
+        <!-- Black Overlay -->
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-                    background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1920&q=80'); 
-                    background-size: cover; 
-                    background-position: center; 
-                    background-repeat: no-repeat;
-                    z-index: 0;"></div>
-        <!-- White Overlay -->
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-                    background: rgba(255, 255, 255, 0.75); 
+                    background: rgba(18, 18, 18, 0.7); 
                     z-index: 1;"></div>
 
         <div class="container" style="position: relative; z-index: 2;">
-            <div class="text-center mb-5 pb-3">
+            <div class="text-center mb-5 pb-3 reveal">
                 <span class="text-uppercase fw-bold letter-spacing-4 d-block mb-3"
                     style="color: var(--primary-gold); letter-spacing: 4px;">Exclusive Services</span>
-                <h2 class="display-4 fw-bold mb-4">Industrial Standards</h2>
+                <h2 class="display-4 fw-bold mb-4 text-white">Industrial Standards</h2>
             </div>
             <div class="row g-4 text-center">
                 <!-- Quality -->
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6 stagger-item">
                     <div class="service-card-3d">
-                        <div class="service-card-inner">
+                        <div class="service-card-inner" style="background: #2a2a2a; border-color: #444;">
                             <div class="service-img-wrap">
                                 <i class="fas fa-microscope"
                                     style="color: var(--primary-gold); filter: drop-shadow(0 10px 10px rgba(197, 160, 89, 0.2));"></i>
                             </div>
-                            <h3 class="h5 fw-bold mb-3">Flavour Science</h3>
+                            <h3 class="h5 fw-bold mb-3 text-white">Flavour Science</h3>
                             <p class="text-secondary small mb-0">R&D labs focused on chemical-free aroma stability and
                                 perfect moisture balance.</p>
                         </div>
                     </div>
                 </div>
                 <!-- Delivery -->
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6 stagger-item">
                     <div class="service-card-3d">
-                        <div class="service-card-inner">
+                        <div class="service-card-inner" style="background: #2a2a2a; border-color: #444;">
                             <div class="service-img-wrap">
                                 <i class="fas fa-boxes-packing"
                                     style="color: var(--primary-gold); filter: drop-shadow(0 10px 10px rgba(197, 160, 89, 0.2));"></i>
                             </div>
-                            <h3 class="h5 fw-bold mb-3">Bulk Efficiency</h3>
+                            <h3 class="h5 fw-bold mb-3 text-white">Bulk Efficiency</h3>
                             <p class="text-secondary small mb-0">High-capacity automated manufacturing delivering
                                 identical quality across tons of product.</p>
                         </div>
                     </div>
                 </div>
                 <!-- Market -->
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6 stagger-item">
                     <div class="service-card-3d">
-                        <div class="service-card-inner">
+                        <div class="service-card-inner" style="background: #2a2a2a; border-color: #444;">
                             <div class="service-img-wrap">
                                 <i class="fas fa-shield-halved"
                                     style="color: var(--primary-gold); filter: drop-shadow(0 10px 10px rgba(197, 160, 89, 0.2));"></i>
                             </div>
-                            <h3 class="h5 fw-bold mb-3">Legal Assurance</h3>
+                            <h3 class="h5 fw-bold mb-3 text-white">Legal Assurance</h3>
                             <p class="text-secondary small mb-0">100% COTPA and international trade compliance
                                 management for seamless logistics.</p>
                         </div>
                     </div>
                 </div>
                 <!-- Client -->
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6 stagger-item">
                     <div class="service-card-3d">
-                        <div class="service-card-inner">
+                        <div class="service-card-inner" style="background: #2a2a2a; border-color: #444;">
                             <div class="service-img-wrap">
                                 <i class="fas fa-flask-vial"
                                     style="color: var(--primary-gold); filter: drop-shadow(0 10px 10px rgba(197, 160, 89, 0.2));"></i>
                             </div>
-                            <h3 class="h5 fw-bold mb-3">Bespoke Profiles</h3>
+                            <h3 class="h5 fw-bold mb-3 text-white">Bespoke Profiles</h3>
                             <p class="text-secondary small mb-0">Custom flavor profile development tailored for specific
                                 regional taste preferences.</p>
                         </div>
@@ -1444,26 +1710,29 @@
         </div>
     </section>
 
+
     <!-- Global Delivery Section -->
-    <section id="delivery" class="delivery-stage">
+    <section id="delivery" class="delivery-stage"
+        style="background: var(--dark-charcoal); border-top: 1px solid rgba(197, 160, 89, 0.1);">
         <div class="container">
             <div class="row align-items-center g-5">
                 <div class="col-lg-5">
                     <span class="text-uppercase fw-bold letter-spacing-4 d-block mb-3"
                         style="color: var(--primary-gold); letter-spacing: 4px;">Logistics Network</span>
-                    <h2 class="display-4 fw-bold mb-4">Fast ◊ Reliable <br><span class="premium-serif">Global
+                    <h2 class="display-4 fw-bold mb-4 text-white">Fast ◊ Reliable <br><span class="premium-serif">Global
                             Delivery</span></h2>
                     <p class="lead text-secondary mb-5">Our integrated supply chain ensures that BrutuS products reach
-                        your facility with <span class="premium-serif text-dark">Industrial Precision</span>, anywhere
+                        your facility with <span class="premium-serif text-white">Industrial Precision</span>, anywhere
                         in the world.</p>
 
                     <div class="d-flex flex-column gap-4">
                         <div class="d-flex align-items-start gap-3">
                             <div class="service-img-wrap mb-0" style="font-size: 2rem;">
-                                <i class="fas fa-truck-fast icon-black"></i>
+                                <i class="fas fa-truck-fast text-white"></i>
                             </div>
                             <div>
-                                <h4 class="fw-bold mb-1" style="font-family: 'Montserrat', sans-serif;">Heavy-Duty
+                                <h4 class="fw-bold mb-1 text-white" style="font-family: 'Montserrat', sans-serif;">
+                                    Heavy-Duty
                                     Logistics</h4>
                                 <p class="small text-secondary mb-0">Direct transport for high-volume industrial
                                     consignments.</p>
@@ -1471,10 +1740,11 @@
                         </div>
                         <div class="d-flex align-items-start gap-3">
                             <div class="service-img-wrap mb-0" style="font-size: 2rem;">
-                                <i class="fas fa-plane-up icon-black"></i>
+                                <i class="fas fa-plane-up text-white"></i>
                             </div>
                             <div>
-                                <h4 class="fw-bold mb-1" style="font-family: 'Montserrat', sans-serif;">Air Express
+                                <h4 class="fw-bold mb-1 text-white" style="font-family: 'Montserrat', sans-serif;">Air
+                                    Express
                                     Portals</h4>
                                 <p class="small text-secondary mb-0">Rapid clearance for specialized premium reserves.
                                 </p>
@@ -1484,12 +1754,13 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="product-float-wrap mb-0">
-                        <div class="product-float-stage">
+                        <div class="product-float-stage"
+                            style="background: rgba(255,255,255,0.05); border: 2px solid rgba(197,160,89,0.2);">
                             <!-- Using a cinematic logistics visual -->
                             <div class="product-float-img-box" style="height: 400px;">
                                 <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=1200"
                                     alt="Global Logistics" class="product-float-img"
-                                    style="filter: grayscale(0.5) contrast(1.2);">
+                                    style="filter: grayscale(0.5) contrast(1.2); border: 4px solid white;">
                             </div>
                             <div class="product-float-info">
                                 <span class="product-float-tag">Industrial Transit</span>
@@ -1502,8 +1773,8 @@
         </div>
     </section>
 
-    <!-- Why Choose Us Section - Updated with Business Details -->
-    <section class="section-padding position-relative" style="overflow: hidden;">
+    <section id="heritage" class="section-padding position-relative"
+        style="overflow: hidden; background: var(--deep-bg);">
         <!-- Background Image Layer -->
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
                     background-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1920&q=80'); 
@@ -1511,67 +1782,65 @@
                     background-position: center; 
                     background-repeat: no-repeat;
                     z-index: 0;"></div>
-        <!-- Light Overlay -->
+        <!-- Ultra Dark Overlay -->
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-                    background: rgba(250, 250, 250, 0.70); 
+                    background: rgba(10, 10, 10, 0.92); 
                     z-index: 1;"></div>
 
         <div class="container" style="position: relative; z-index: 2;">
-            <div class="row align-items-center">
+            <div class="row align-items-center g-5">
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <span class="text-uppercase fw-bold text-secondary tracking-wide mb-2 d-block">Est. 1985</span>
-                    <h2 class="display-5 fw-bold mb-4">California Tobacco Company</h2>
+                    <h2 class="display-5 fw-bold mb-4 text-white">California Tobacco Company</h2>
                     <p class="lead text-secondary mb-4">Delivering carefully crafted flavoured tobacco, defined by
-                        consistency and control.</p>
-                    <p class="text-secondary mb-5">We also offer customized flavour solutions to meet specific market
-                        demands, ensuring your brand stands out with unique, signature blends.</p>
+                        consistency and control. We don't just manufacture; we engineer taste.</p>
 
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="why-card h-100">
-                                <h4 class="h5 fw-bold text-dark"><i class="fas fa-history check-icon"></i>40+ Years</h4>
-                                <p class="small text-dark m-0">Decades of industry leadership and operational
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-6 stagger-item">
+                            <div class="why-card h-100"
+                                style="background: rgba(255,255,255,0.03); border-left: 4px solid var(--primary-gold);">
+                                <h4 class="h5 fw-bold text-white"><i class="fas fa-history me-2 text-gold"></i>40+ Years
+                                </h4>
+                                <p class="small text-secondary m-0">Decades of industry leadership and operational
                                     excellence.</p>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="why-card h-100">
-                                <h4 class="h5 fw-bold text-dark"><i class="fas fa-leaf check-icon"></i>Product Focused
+                        <div class="col-md-6 stagger-item">
+                            <div class="why-card h-100"
+                                style="background: rgba(255,255,255,0.03); border-left: 4px solid var(--primary-gold);">
+                                <h4 class="h5 fw-bold text-white"><i class="fas fa-flask me-2 text-gold"></i>Customized
                                 </h4>
-                                <p class="small text-dark m-0">Specializing in premium tobacco products and essential
-                                    raw materials.</p>
+                                <p class="small text-secondary m-0">Signature blends tailored for specific regional
+                                    markets.</p>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="why-card h-100">
-                                <h4 class="h5 fw-bold text-dark"><i
-                                        class="fas fa-check-circle check-icon"></i>Consistency</h4>
-                                <p class="small text-dark m-0">Our flavor notes remain identical across every single
-                                    shipment.</p>
-                            </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <img src="assets/premium-tobacco-leaves.png" alt="Premium Tobacco Leaves"
+                                class="img-fluid rounded-4 shadow-lg"
+                                style="border: 2px solid white; height: 200px; width: 100%; object-fit: cover;">
                         </div>
-                        <div class="col-md-6">
-                            <div class="why-card h-100">
-                                <h4 class="h5 fw-bold text-dark"><i class="fas fa-flask check-icon"></i>Customization
-                                </h4>
-                                <p class="small text-dark m-0">Bespoke flavour profiles tailored to your specific
-                                    regional markets.</p>
-                            </div>
+                        <div class="col-6">
+                            <img src="assets/tobacco-leaf-detail.png" alt="Tobacco Leaf Detail"
+                                class="img-fluid rounded-4 shadow-lg"
+                                style="border: 2px solid white; height: 200px; width: 100%; object-fit: cover;">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 ps-lg-5">
-                    <div class="position-relative">
-                        <!-- Using Local Asset Image -->
-                        <img src="assets/products/uploaded_media_1_1769962563893.jpg" alt="Tobacco Manufacturing"
-                            class="img-fluid rounded-4 mb-4 shadow-lg w-100"
-                            style="min-height: 500px; object-fit: cover;">
+                    <div class="position-relative reveal">
+                        <img src="assets/tobacco-curing-facility.png" alt="Traditional Tobacco Curing Facility"
+                            class="img-fluid rounded-4 shadow-lg w-100"
+                            style="min-height: 550px; object-fit: cover; border: 4px solid white;">
 
                         <div class="p-4 rounded-4 shadow-lg text-white position-absolute bottom-0 start-0 m-4"
-                            style="background: rgba(10, 10, 10, 0.9); border-left: 5px solid var(--primary-gold); max-width: 350px;">
-                            <h4 class="text-white mb-2" style="font-family: 'Montserrat', sans-serif;">BrutuS</h4>
-                            <p class="small opacity-90 mb-0">The signature brand of California Tobacco Company. A symbol
-                                of power and refined taste.</p>
+                            style="background: rgba(10, 10, 10, 0.9); border-left: 5px solid var(--primary-gold); max-width: 350px; backdrop-filter: blur(10px);">
+                            <h4 class="text-white mb-2" style="font-family: 'Montserrat', sans-serif;">Industrial BrutuS
+                            </h4>
+                            <p class="small opacity-90 mb-0">The signature of power. Every ton we produce undergoes
+                                rigorous chemical profiling to ensure zero deviation in flavor notes.</p>
                         </div>
                     </div>
                 </div>
@@ -1580,58 +1849,64 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5" style="background: #fafafa;">
+    <section id="contact" class="py-5" style="background: var(--dark-charcoal);">
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <div class="contact-box shadow-sm">
+                    <div class="contact-box shadow-lg"
+                        style="background: #1a1a1a; border-color: rgba(197, 160, 89, 0.2);">
                         <div class="row align-items-center">
                             <div class="col-lg-6">
-                                <h2 class="display-5 fw-bold mb-4">Get in Touch</h2>
+                                <h2 class="display-5 fw-bold mb-4 text-white">Get in Touch</h2>
                                 <p class="text-secondary mb-5">Connect with the California Tobacco
                                     Company team for
                                     professional inquiries.</p>
 
-                                <a href="tel:7067968137" class="contact-item">
-                                    <div class="fs-3 phone-color"><i class="fas fa-phone-alt"></i>
+                                <a href="tel:7067968137" class="contact-item"
+                                    style="background: #2a2a2a; border-color: #333;">
+                                    <div class="fs-3 text-white"><i class="fas fa-phone-alt"></i>
                                     </div>
                                     <div>
                                         <span class="d-block small text-secondary fw-bold">Call
                                             Us</span>
-                                        <span class="h5 fw-bold mb-0">+91 7067968137</span>
+                                        <span class="h5 fw-bold mb-0 text-white">+91 7067968137</span>
                                     </div>
                                 </a>
 
-                                <a href="https://wa.me/917067968137" class="contact-item">
-                                    <div class="fs-3 wa-color"><i class="fab fa-whatsapp"></i></div>
+                                <a href="https://wa.me/917067968137" class="contact-item"
+                                    style="background: #2a2a2a; border-color: #333;">
+                                    <div class="fs-3" style="color: #25D366;"><i class="fab fa-whatsapp"></i></div>
                                     <div>
                                         <span class="d-block small text-secondary fw-bold">WhatsApp</span>
-                                        <span class="h5 fw-bold mb-0">+91 7067968137</span>
+                                        <span class="h5 fw-bold mb-0 text-white">+91 7067968137</span>
                                     </div>
                                 </a>
 
-                                <a href="https://t.me/+917067968137" class="contact-item">
-                                    <div class="fs-3 tg-color"><i class="fab fa-telegram"></i></div>
+                                <a href="https://t.me/+917067968137" class="contact-item"
+                                    style="background: #2a2a2a; border-color: #333;">
+                                    <div class="fs-3" style="color: var(--primary-gold);"><i
+                                            class="fab fa-telegram"></i></div>
                                     <div>
                                         <span class="d-block small text-secondary fw-bold">Telegram</span>
-                                        <span class="h5 fw-bold mb-0">Join our Channel</span>
+                                        <span class="h5 fw-bold mb-0 text-white">Join our Channel</span>
                                     </div>
                                 </a>
 
-                                <a href="mailto:californiatobaccocompany@gmail.com" class="contact-item">
+                                <a href="mailto:californiatobaccocompany@gmail.com" class="contact-item"
+                                    style="background: #2a2a2a; border-color: #333;">
                                     <div class="fs-3 mail-color"><i class="fas fa-envelope"></i>
                                     </div>
                                     <div>
                                         <span class="d-block small text-secondary fw-bold">Email</span>
-                                        <span class="h5 fw-bold mb-0"
+                                        <span class="h5 fw-bold mb-0 text-white"
                                             style="font-size: 0.85rem;">californiatobaccocompany@gmail.com</span>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-lg-6 text-center d-none d-lg-block">
                                 <img src="assets/brutus-main-logo.jpg" alt="Logo" class="img-fluid mb-4"
-                                    style="max-height: 180px; width: auto; object-fit: contain;">
-                                <h4 class="fw-bold fs-2">California Tobacco Co.</h4>
+                                    style="max-height: 180px; width: auto; object-fit: contain; border: 4px solid white; border-radius: 15px;">
+                                <h4 class="fw-bold fs-2 text-white">California Tobacco Co.</h4>
                                 <p class="text-gold text-uppercase fw-bold"
                                     style="color: var(--primary-gold); letter-spacing: 3px;">
                                     Signature of Power</p>
@@ -1708,26 +1983,26 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: #007bff;
-            /* Changed to Blue as requested */
-            color: #FFF;
+            background-color: #25D366;
+            color: white;
             width: 60px;
             height: 60px;
             border-radius: 50%;
             text-align: center;
             font-size: 30px;
-            box-shadow: 2px 2px 3px #999;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            border: 2px solid white;
         }
 
         .wa-float:hover {
             transform: scale(1.1);
-            background-color: #0056b3;
-            /* Darker blue on hover */
+            background-color: #128C7E;
+            color: white;
         }
     </style>
     <a href="https://wa.me/917067968137" class="wa-float" target="_blank">
@@ -1742,42 +2017,21 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-        const heroImg = document.querySelector('.hero-image-3d');
-        window.addEventListener('mousemove', (e) => {
-            if (window.innerWidth > 991) {
-                const x = (window.innerWidth / 2 - e.pageX) / 50;
-                const y = (window.innerHeight / 2 - e.pageY) / 50;
-                heroImg.style.transform = `rotateY(${-15 + x}deg) rotateX(${8 + y}deg)`;
-            }
-        });
-
-        // Auto-close mobile menu on link click
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                const navbarCollapse = document.querySelector('.navbar-collapse');
-                if (navbarCollapse.classList.contains('show')) {
-                    new bootstrap.Collapse(navbarCollapse).hide();
-                }
-            });
-        });
-
-        // Age Verification Logic
+        // Age Verification & Page Logic
         document.addEventListener('DOMContentLoaded', function () {
             const overlay = document.getElementById('age-verification-overlay');
             const yesBtn = document.getElementById('age-yes');
             const noBtn = document.getElementById('age-no');
             const message = document.getElementById('age-message');
 
-            // FOR TESTING: Clear verification to see if it shows
-            // localStorage.removeItem('ageVerified'); 
+            if (!overlay || !yesBtn || !noBtn) return;
 
             // Check if already verified
             if (localStorage.getItem('ageVerified') === 'true') {
                 overlay.style.display = 'none';
                 document.body.classList.remove('age-locked');
             } else {
-                overlay.style.display = 'flex'; // Ensure it's visible
+                overlay.style.display = 'flex';
                 overlay.style.opacity = '1';
                 overlay.style.visibility = 'visible';
                 document.body.classList.add('age-locked');
@@ -1794,13 +2048,12 @@
             });
 
             noBtn.addEventListener('click', function () {
-                message.classList.remove('d-none');
+                if (message) message.classList.remove('d-none');
                 yesBtn.style.opacity = '0.5';
                 yesBtn.disabled = true;
                 noBtn.style.opacity = '0.5';
                 noBtn.disabled = true;
 
-                // Redirect after showing the message
                 setTimeout(() => {
                     if (window.history.length > 1) {
                         window.history.back();
@@ -1808,6 +2061,43 @@
                         window.location.href = 'https://www.google.com';
                     }
                 }, 2000);
+            });
+
+            // Auto-close mobile menu on link click
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                        new bootstrap.Collapse(navbarCollapse).hide();
+                    }
+                });
+            });
+            // Official Scroll Reveal
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // Dynamic Background Transition
+            window.addEventListener('scroll', () => {
+                const scrollPos = window.scrollY;
+                const body = document.body;
+
+                if (scrollPos > 1000 && scrollPos < 3000) {
+                    body.style.backgroundColor = '#2a0a0a'; // Deep Burgundy
+                } else if (scrollPos >= 3000) {
+                    body.style.backgroundColor = '#1a1a05'; // Deep Gold Tint
+                } else {
+                    body.style.backgroundColor = '#121212'; // Original Charcoal
+                }
             });
         });
 
