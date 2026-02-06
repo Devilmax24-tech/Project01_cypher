@@ -218,180 +218,188 @@
                 padding: 120px 0 60px;
             }
         }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #C5A059 0%, #f4d47c 50%, #C5A059 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
+        }
     </style>
 </head>
 
-<nav class="navbar navbar-expand-lg fixed-top py-3">
-    <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-            <img src="assets/brutus-main-logo.jpg" alt="BrutuS Logo"
-                style="height: 60px; width: auto; object-fit: contain; border: 2px solid white; border-radius: 8px;">
-            <div class="d-none d-sm-flex flex-column ms-3" style="line-height: 1.1;">
-                <span class="fw-bold text-uppercase text-white"
-                    style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; letter-spacing: 1.5px;">BrutuS</span>
-                <span class="text-secondary text-uppercase"
-                    style="font-size: 0.6rem; letter-spacing: 1px; font-weight: 600; color: var(--primary-gold) !important;">California
-                    Tobacco
-                    Company</span>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center me-3" href="index.html">
+                <img src="assets/brutus-main-logo.jpg" alt="BrutuS Logo"
+                    style="height: 50px; width: auto; object-fit: contain; border: 2px solid white; border-radius: 5px;">
+                <div class="d-none d-sm-flex flex-column ms-2" style="line-height: 1;">
+                    <span class="fw-bold text-uppercase text-white"
+                        style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; letter-spacing: 2px; border-bottom: 2px solid var(--primary-gold); display: inline-block; padding-bottom: 2px; margin-bottom: 2px;">BrutuS</span>
+                    <span class="text-secondary text-uppercase"
+                        style="font-size: 0.5rem; letter-spacing: 2px; font-weight: 800; color: var(--primary-gold) !important; opacity: 0.8;">California
+                        Tobacco Co.</span>
+                </div>
+            </a>
+
+            <div class="search-container d-none d-lg-block mx-5 flex-grow-1 position-relative">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search premium catalog.."
+                    onclick="window.location.href='products.html'">
             </div>
-        </a>
 
-        <div class="search-container d-none d-lg-block mx-5 flex-grow-1 position-relative">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" class="search-input" placeholder="Search premium catalog.."
-                onclick="window.location.href='products.html'">
+            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
+                <ul class="navbar-nav gap-lg-3 align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                </ul>
+            </div>
         </div>
+    </nav>
 
-        <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarNav">
-            <i class="fas fa-bars"></i>
-        </button>
+    <section class="product-hero">
+        <div class="container">
+            <h1 class="product-name">American Red</h1>
+            <p class="product-tagline">California Strength & Refined Taste</p>
+            <p class="lead mx-auto mb-5" style="max-width: 850px; color: #aaa; font-size: 1.2rem; line-height: 1.8;">
+                Crafted for industrial excellence, our American Red blend delivers a consistent, robust profile that has
+                defined the global standard for decades.
+            </p>
+            <div class="price-tag mb-5">Industrial Inquiry <span>(Bulk Orders)</span></div>
+            <img src="assets/products/uploaded_media_0_1769944372421.jpg" alt="BrutuS American Red"
+                class="product-main-img">
+            <div class="mt-5">
+                <a href="https://wa.me/917067968137?text=I%20want%20to%20buy%20BrutuS%20American%20Red"
+                    class="btn-whatsapp-buy">
+                    <i class="fab fa-whatsapp"></i> Order Professional Batch
+                </a>
+            </div>
+        </div>
+    </section>
 
-        <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
-            <ul class="navbar-nav gap-lg-3 align-items-center">
-                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link active fw-bold" href="products.html">Products</a></li>
-                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+    <!-- Benefits Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Main Benefits</h2>
+            <ul class="feature-list" style="list-style: none; padding: 0;">
+                <li class="feature-item"><i class="fas fa-check-circle"></i> 40+ Years of Consistent Industrial Blend
+                    Quality</li>
+                <li class="feature-item"><i class="fas fa-check-circle"></i> Premium Sun-Dried Virginia Leaves for Rich
+                    Aroma</li>
+                <li class="feature-item"><i class="fas fa-check-circle"></i> Precision Moisture levels for
+                    Export-Standard Longevity</li>
+                <li class="feature-item"><i class="fas fa-check-circle"></i> Licensed and COTPA 2003 Compliant
+                    Manufacturing</li>
             </ul>
         </div>
-    </div>
-</nav>
-<section class="product-hero">
-    <div class="container">
-        <h1 class="product-name">American Red</h1>
-        <p class="product-tagline">California Strength & Refined Taste</p>
+    </section>
 
-        <p class="lead mx-auto mb-5" style="max-width: 850px; color: #aaa; font-size: 1.2rem; line-height: 1.8;">
-            Crafted for industrial excellence, our American Red blend delivers a consistent, robust profile that has
-            defined the global standard for decades.
-        </p>
-
-        <div class="price-tag mb-5">
-            Industrial Inquiry <span>(Bulk Orders)</span>
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Customer Reviews</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-5">
+                    <div class="review-card">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"The consistency of the American Red blend is unmatched. We haven't seen
+                            a single deviation in profile across ten bulk shipments."</p>
+                        <p class="review-author">— International Logistics Manager</p>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="review-card">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Our regional distributors prefer BrutuS over luxury competitors purely
+                            because of the classic, robust hit and aroma stability."</p>
+                        <p class="review-author">— Wholesale Partner, South-East Asia</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <img src="assets/products/uploaded_media_0_1769944372421.jpg" alt="BrutuS American Red"
-            class="product-main-img">
-
-        <div class="mt-5">
+    <!-- Bottom Action -->
+    <section class="py-5 text-center">
+        <div class="container">
+            <h3 class="mb-4">Ready to Elevate Your Inventory?</h3>
             <a href="https://wa.me/917067968137?text=I%20want%20to%20buy%20BrutuS%20American%20Red"
                 class="btn-whatsapp-buy">
-                <i class="fab fa-whatsapp"></i> Order Professional Batch
+                <i class="fab fa-whatsapp"></i> Buy on WhatsApp Now
             </a>
-        </div>
-    </div>
-</section>
-
-<!-- Benefits Section -->
-<section class="features-section">
-    <div class="container">
-        <h2 class="text-center mb-5">Main Benefits</h2>
-        <ul class="feature-list">
-            <li class="feature-item">
-                <i class="fas fa-check-circle"></i> 40+ Years of Consistent Industrial Blend Quality
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-check-circle"></i> Premium Sun-Dried Virginia Leaves for Rich Aroma
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-check-circle"></i> Precision Moisture levels for Export-Standard Longevity
-            </li>
-            <li class="feature-item">
-                <i class="fas fa-check-circle"></i> Licensed and COTPA 2003 Compliant Manufacturing
-            </li>
-        </ul>
-    </div>
-</section>
-
-<!-- Reviews Section -->
-<section class="reviews-section">
-    <div class="container">
-        <h2 class="text-center mb-5">Customer Reviews</h2>
-        <div class="row g-4 justify-content-center">
-            <div class="col-lg-5">
-                <div class="review-card">
-                    <div class="mb-3 text-warning">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"The consistency of the American Red blend is unmatched. We haven't seen
-                        a single deviation in profile across ten bulk shipments."</p>
-                    <p class="review-author">— International Logistics Manager</p>
-                </div>
-            </div>
-            <div class="col-lg-5">
-                <div class="review-card">
-                    <div class="mb-3 text-warning">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"Our regional distributors prefer BrutuS over luxury competitors purely
-                        because of the classic, robust hit and aroma stability."</p>
-                    <p class="review-author">— Wholesale Partner, South-East Asia</p>
-                </div>
+            <div class="mt-4">
+                <a href="products.html" class="text-secondary text-decoration-none small">
+                    <i class="fas fa-arrow-left me-1"></i> Back to Professional Catalog
+                </a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Bottom Action -->
-<section class="py-5 text-center">
-    <div class="container">
-        <h3 class="mb-4">Ready to Elevate Your Inventory?</h3>
-        <a href="https://wa.me/917067968137?text=I%20want%20to%20buy%20BrutuS%20American%20Red"
-            class="btn-whatsapp-buy">
-            <i class="fab fa-whatsapp"></i> Buy on WhatsApp Now
-        </a>
-        <div class="mt-4">
-            <a href="products.html" class="text-secondary text-decoration-none small">
-                <i class="fas fa-arrow-left me-1"></i> Back to Professional Catalog
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- Include Age Verification Script (Copied for consistency) -->
-
-<!-- Official WhatsApp Floating Action Button (Gold/White) -->
-<style>
-    .wa-float {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        background-color: #25D366;
-        color: white;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        text-align: center;
-        font-size: 30px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        border: 2px solid white;
-    }
-
-    .wa-float:hover {
-        transform: scale(1.1);
-        background-color: #128C7E;
-        color: white;
-    }
-</style>
-<a href="https://wa.me/917067968137" class="wa-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        if (localStorage.getItem('ageVerified') !== 'true') {
-            window.location.href = 'index.html'; // Redirect to home if not verified
+    <!-- Official WhatsApp Floating Action Button (Gold/White) -->
+    <style>
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 2px solid white;
         }
-    });
-</script>
+
+        .wa-float:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+            color: white;
+        }
+    </style>
+    <a href="https://wa.me/917067968137" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (localStorage.getItem('ageVerified') !== 'true') {
+                window.location.href = 'index.html'; // Redirect to home if not verified
+            }
+        });
+    </script>
 
 </body>
 

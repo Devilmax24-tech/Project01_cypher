@@ -99,6 +99,14 @@
             overflow: hidden;
         }
 
+        .section-padding {
+            padding: 120px 0;
+        }
+
+        .services-grid {
+            margin-bottom: 80px;
+        }
+
         .hero-mini-video {
             position: absolute;
             top: 50%;
@@ -122,12 +130,13 @@
             background: rgba(255, 255, 255, 0.03);
             border: 2px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
-            overflow: hidden;
+            /* overflow: hidden removed to allow floating icons */
             transition: var(--transition);
             height: 100%;
             display: flex;
             flex-direction: column;
             position: relative;
+            /* Allow icons to float outside */
         }
 
         .service-card-premium::before {
@@ -201,18 +210,18 @@
 
         .service-icon-floating {
             position: absolute;
-            bottom: -35px;
-            right: 35px;
-            width: 80px;
-            height: 80px;
-            border-radius: 22px;
+            top: -25px;
+            right: -25px;
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            z-index: 2;
+            font-size: 1.8rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            z-index: 10;
             transition: var(--transition);
         }
 
@@ -253,21 +262,35 @@
             --card-glow-soft: rgba(254, 225, 64, 0.15);
         }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
+        .gradient-text {
+            background: linear-gradient(90deg, #C5A059 0%, #f4d47c 50%, #C5A059 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
         footer {
             background: #050505;
             color: #eee;
-            padding: 100px 0 50px;
+            padding: 80px 0 0px;
+            margin-bottom: 0 !important;
             border-top: 1px solid var(--primary-gold);
         }
 
@@ -432,16 +455,15 @@
     <nav class="navbar navbar-expand-lg fixed-top py-3">
         <div class="container">
             <!-- Left: Logo -->
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <a class="navbar-brand d-flex align-items-center me-3" href="index.html">
                 <img src="assets/brutus-main-logo.jpg" alt="BrutuS Logo"
-                    style="height: 60px; width: auto; object-fit: contain; border: 2px solid white; border-radius: 8px;">
-                <div class="d-none d-sm-flex flex-column ms-3" style="line-height: 1.1;">
+                    style="height: 50px; width: auto; object-fit: contain; border: 2px solid white; border-radius: 5px;">
+                <div class="d-none d-sm-flex flex-column ms-2" style="line-height: 1;">
                     <span class="fw-bold text-uppercase text-white"
-                        style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; letter-spacing: 1.5px;">BrutuS</span>
+                        style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; letter-spacing: 2px; border-bottom: 2px solid var(--primary-gold); display: inline-block; padding-bottom: 2px; margin-bottom: 2px;">BrutuS</span>
                     <span class="text-secondary text-uppercase"
-                        style="font-size: 0.6rem; letter-spacing: 1px; font-weight: 600; color: var(--primary-gold) !important;">California
-                        Tobacco
-                        Company</span>
+                        style="font-size: 0.5rem; letter-spacing: 2px; font-weight: 800; color: var(--primary-gold) !important; opacity: 0.8;">California
+                        Tobacco Co.</span>
                 </div>
             </a>
 
@@ -478,17 +500,17 @@
         </div>
     </header>
 
-    <section class="section-padding" style="background: var(--deep-bg);">
+    <section class="section-padding services-grid" style="background: var(--deep-bg);">
         <div class="container">
             <div class="row g-5">
                 <!-- Flavour R&D -->
                 <div class="col-lg-6 d-flex reveal">
                     <div class="service-card-premium w-100">
-                        <div class="service-img-box">
+                        <div class="service-img-box" style="border-radius: 20px 20px 0 0; overflow: hidden;">
                             <img src="assets/tobacco-leaf-detail.png" alt="Flavour R&D Detail">
-                            <div class="service-icon-floating icon-rd">
-                                <i class="fas fa-flask"></i>
-                            </div>
+                        </div>
+                        <div class="service-icon-floating icon-rd">
+                            <i class="fas fa-flask"></i>
                         </div>
                         <div class="service-details">
                             <h3 class="fw-bold mb-3 h4"
@@ -512,11 +534,11 @@
                 <!-- Mass Manufacturing -->
                 <div class="col-lg-6 d-flex reveal">
                     <div class="service-card-premium w-100">
-                        <div class="service-img-box">
+                        <div class="service-img-box" style="border-radius: 20px 20px 0 0; overflow: hidden;">
                             <img src="assets/tobacco-curing-facility.png" alt="Mass Manufacturing Infrastructure">
-                            <div class="service-icon-floating icon-mfg">
-                                <i class="fas fa-industry"></i>
-                            </div>
+                        </div>
+                        <div class="service-icon-floating icon-mfg">
+                            <i class="fas fa-industry"></i>
                         </div>
                         <div class="service-details">
                             <h3 class="fw-bold mb-3 h4"
@@ -540,11 +562,11 @@
                 <!-- Export Logistics -->
                 <div class="col-lg-6 d-flex reveal">
                     <div class="service-card-premium w-100">
-                        <div class="service-img-box">
+                        <div class="service-img-box" style="border-radius: 20px 20px 0 0; overflow: hidden;">
                             <img src="assets/premium-tobacco-leaves.png" alt="Premium Tobacco Supply Chain">
-                            <div class="service-icon-floating icon-log">
-                                <i class="fas fa-box-open"></i>
-                            </div>
+                        </div>
+                        <div class="service-icon-floating icon-log">
+                            <i class="fas fa-box-open"></i>
                         </div>
                         <div class="service-details">
                             <h3 class="fw-bold mb-3 h4"
@@ -568,11 +590,11 @@
                 <!-- Private Labeling -->
                 <div class="col-lg-6 d-flex reveal">
                     <div class="service-card-premium w-100">
-                        <div class="service-img-box">
+                        <div class="service-img-box" style="border-radius: 20px 20px 0 0; overflow: hidden;">
                             <img src="assets/premium-tobacco-leaves.png" alt="Bespoke Branding Heritage">
-                            <div class="service-icon-floating icon-pvt">
-                                <i class="fas fa-tags"></i>
-                            </div>
+                        </div>
+                        <div class="service-icon-floating icon-pvt">
+                            <i class="fas fa-tags"></i>
                         </div>
                         <div class="service-details">
                             <h3 class="fw-bold mb-3 h4"
@@ -610,16 +632,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 ps-lg-5">
-                        <h2 class="display-5 fw-bold mb-4 text-white">CORE INDUSTRIAL FEATURES</h2>
-                        <p class="mb-5" style="line-height: 1.8; color: var(--text-muted);">Our services are backed by
+                    <div class="col-lg-6">
+                        <h2 class="display-5 fw-bold mb-4 text-white text-center">CORE INDUSTRIAL FEATURES</h2>
+                        <p class="mb-5 text-center"
+                            style="line-height: 1.8; color: var(--text-muted); max-width: 500px; margin-left: auto; margin-right: auto;">
+                            Our services are backed by
                             decades of
                             technical mastery and substantial investment in infrastructure. We don't just provide a
                             service; we deliver an industrial advantage.</p>
 
                         <div class="row g-4 d-flex align-items-stretch">
                             <div class="col-sm-6 d-flex">
-                                <div class="p-4 rounded-3 w-100"
+                                <div class="p-3 rounded-3 w-100"
                                     style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--primary-gold); transition: var(--transition);">
                                     <h5 class="text-white fw-bold small mb-2">PRECISION CURING</h5>
                                     <p class="small mb-0" style="color: var(--text-muted);">Automated moisture control
@@ -628,7 +652,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 d-flex">
-                                <div class="p-4 rounded-3 w-100"
+                                <div class="p-3 rounded-3 w-100"
                                     style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--primary-gold); transition: var(--transition);">
                                     <h5 class="text-white fw-bold small mb-2">CHEMICAL STABILITY</h5>
                                     <p class="small mb-0" style="color: var(--text-muted);">Laboratory-grade
@@ -637,7 +661,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 d-flex">
-                                <div class="p-4 rounded-3 w-100"
+                                <div class="p-3 rounded-3 w-100"
                                     style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--primary-gold); transition: var(--transition);">
                                     <h5 class="text-white fw-bold small mb-2">GLOBAL LOGISTICS</h5>
                                     <p class="small mb-0" style="color: var(--text-muted);">End-to-end supply chain
@@ -646,7 +670,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 d-flex">
-                                <div class="p-4 rounded-3 w-100"
+                                <div class="p-3 rounded-3 w-100"
                                     style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--primary-gold); transition: var(--transition);">
                                     <h5 class="text-white fw-bold small mb-2">MASS SCALABILITY</h5>
                                     <p class="small mb-0" style="color: var(--text-muted);">High-volume multi-ton
@@ -671,8 +695,8 @@
         </section>
 
         <!-- Footer -->
-        <footer class="text-white py-5" style="background: #050505;">
-            <div class="container py-4">
+        <footer class="text-white">
+            <div class="container">
                 <div class="row g-5">
                     <div class="col-lg-4">
                         <img src="assets/brutus-main-logo.jpg" alt="BrutuS Footer Logo"
@@ -716,9 +740,9 @@
                         </div>
                     </div>
                 </div>
-                <hr class="border-secondary opacity-25 my-5">
-                <p class="small text-secondary text-center mb-0">&copy; 2026 California Tobacco Company. All rights
-                    reserved.</p>
+                <hr class="border-secondary opacity-10 mt-5 mb-0">
+                <p class="small text-secondary text-center mb-0" style="padding-bottom: 5px;">&copy; 2026 California
+                    Tobacco Company. All rights reserved.</p>
             </div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

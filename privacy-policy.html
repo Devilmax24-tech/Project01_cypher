@@ -245,16 +245,15 @@
     </div>
     <nav class="navbar navbar-expand-lg fixed-top py-3">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <a class="navbar-brand d-flex align-items-center me-3" href="index.html">
                 <img src="assets/brutus-main-logo.jpg" alt="BrutuS Logo"
-                    style="height: 60px; width: auto; object-fit: contain; border: 2px solid white; border-radius: 8px;">
-                <div class="d-none d-sm-flex flex-column ms-3" style="line-height: 1.1;">
+                    style="height: 50px; width: auto; object-fit: contain; border: 2px solid white; border-radius: 5px;">
+                <div class="d-none d-sm-flex flex-column ms-2" style="line-height: 1;">
                     <span class="fw-bold text-uppercase text-white"
-                        style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; letter-spacing: 1.5px;">BrutuS</span>
+                        style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; letter-spacing: 2px; border-bottom: 2px solid var(--primary-gold); display: inline-block; padding-bottom: 2px; margin-bottom: 2px;">BrutuS</span>
                     <span class="text-secondary text-uppercase"
-                        style="font-size: 0.6rem; letter-spacing: 1px; font-weight: 600; color: var(--primary-gold) !important;">California
-                        Tobacco
-                        Company</span>
+                        style="font-size: 0.5rem; letter-spacing: 2px; font-weight: 800; color: var(--primary-gold) !important; opacity: 0.8;">California
+                        Tobacco Co.</span>
                 </div>
             </a>
 
@@ -330,63 +329,65 @@
             background-color: #128C7E;
             color: white;
         }
-    </style>
-    <a href="https://wa.me/917067968137" class="wa-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
 
-    <script>
-        // Age Sync Logic
+        <a href="https://wa.me/917067968137" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a><script> // Age Sync Logic
+
         document.addEventListener('DOMContentLoaded', function () {
-            const overlay = document.getElementById('age-verification-overlay');
-            const yesBtn = document.getElementById('age-yes');
-            const noBtn = document.getElementById('age-no');
-            const message = document.getElementById('age-message');
+                const overlay=document.getElementById('age-verification-overlay');
+                const yesBtn=document.getElementById('age-yes');
+                const noBtn=document.getElementById('age-no');
+                const message=document.getElementById('age-message');
 
-            if (!overlay) return;
+                if ( !overlay) return;
 
-            // Check if already verified
-            if (localStorage.getItem('ageVerified') === 'true') {
-                overlay.style.display = 'none';
-                document.body.classList.remove('age-locked');
-            } else {
-                overlay.style.display = 'flex';
-                overlay.style.opacity = '1';
-                overlay.style.visibility = 'visible';
-                document.body.classList.add('age-locked');
-            }
-
-            if (yesBtn) {
-                yesBtn.addEventListener('click', function () {
-                    localStorage.setItem('ageVerified', 'true');
-                    overlay.style.opacity = '0';
-                    overlay.style.visibility = 'hidden';
+                // Check if already verified
+                if (localStorage.getItem('ageVerified')==='true') {
+                    overlay.style.display='none';
                     document.body.classList.remove('age-locked');
-                    setTimeout(() => {
-                        overlay.style.display = 'none';
-                    }, 600);
-                });
-            }
+                }
 
-            if (noBtn) {
-                noBtn.addEventListener('click', function () {
-                    if (message) message.classList.remove('d-none');
-                    yesBtn.style.opacity = '0.5';
-                    yesBtn.disabled = true;
-                    noBtn.style.opacity = '0.5';
-                    noBtn.disabled = true;
+                else {
+                    overlay.style.display='flex';
+                    overlay.style.opacity='1';
+                    overlay.style.visibility='visible';
+                    document.body.classList.add('age-locked');
+                }
 
-                    setTimeout(() => {
-                        if (window.history.length > 1) {
-                            window.history.back();
-                        } else {
-                            window.location.href = 'https://www.google.com';
-                        }
-                    }, 2000);
-                });
-            }
-        });
-    </script>
-</body>
+                if (yesBtn) {
+                    yesBtn.addEventListener('click', function () {
+                            localStorage.setItem('ageVerified', 'true');
+                            overlay.style.opacity='0';
+                            overlay.style.visibility='hidden';
+                            document.body.classList.remove('age-locked');
 
-</html>
+                            setTimeout(()=> {
+                                    overlay.style.display='none';
+                                }
+
+                                , 600);
+                        });
+                }
+
+                if (noBtn) {
+                    noBtn.addEventListener('click', function () {
+                            if (message) message.classList.remove('d-none');
+                            yesBtn.style.opacity='0.5';
+                            yesBtn.disabled=true;
+                            noBtn.style.opacity='0.5';
+                            noBtn.disabled=true;
+
+                            setTimeout(()=> {
+                                    if (window.history.length > 1) {
+                                        window.history.back();
+                                    }
+
+                                    else {
+                                        window.location.href='https://www.google.com';
+                                    }
+                                }
+
+                                , 2000);
+                        });
+                }
+            });
+        </script></body></html>

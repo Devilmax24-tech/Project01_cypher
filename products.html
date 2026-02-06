@@ -121,26 +121,27 @@
             justify-content: space-between;
             padding: 12px 18px;
             border-radius: 12px;
-            background: #f8f9fa;
-            border: 1px solid transparent;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: var(--transition);
             cursor: pointer;
             text-decoration: none;
-            color: #444;
+            color: #ccc;
         }
 
         .collection-item:hover {
-            background: #fff;
+            background: rgba(197, 160, 89, 0.1);
             border-color: var(--primary-gold);
             transform: translateX(10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            color: #000;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            color: #fff;
         }
 
         .collection-item.active {
-            background: var(--dark-charcoal);
-            color: #fff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: var(--primary-gold);
+            color: #000;
+            border-color: var(--primary-gold);
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2);
         }
 
         .collection-name {
@@ -159,7 +160,7 @@
         }
 
         .collection-item.active .collection-count {
-            background: var(--primary-gold);
+            background: rgba(0, 0, 0, 0.2);
             color: #000;
         }
 
@@ -238,7 +239,7 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
             font-size: 1.4rem;
-            color: var(--dark-charcoal);
+            color: var(--white);
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: -1px;
@@ -256,7 +257,7 @@
 
         .product-float-desc {
             font-size: 0.85rem;
-            color: #666;
+            color: #aaa;
             margin-bottom: auto;
             max-width: 250px;
             margin-left: auto;
@@ -291,14 +292,14 @@
 
         .legal-note {
             font-size: 0.72rem;
-            color: #666;
+            color: #bbb;
             margin-top: 50px;
             padding: 24px;
-            background: #fdfbf7;
+            background: rgba(255, 255, 255, 0.02);
             border-left: 3px solid var(--primary-gold);
             border-radius: 4px;
             line-height: 1.6;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .legal-title {
@@ -307,7 +308,7 @@
             font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--dark-charcoal);
+            color: var(--primary-gold);
             margin-bottom: 12px;
             display: flex;
             align-items: center;
@@ -339,16 +340,15 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top py-3">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <a class="navbar-brand d-flex align-items-center me-3" href="index.html">
                 <img src="assets/brutus-main-logo.jpg" alt="BrutuS Logo"
-                    style="height: 55px; width: auto; object-fit: contain; border: 2px solid white; border-radius: 5px;">
-                <div class="d-none d-sm-flex flex-column ms-2" style="line-height: 1.1;">
+                    style="height: 50px; width: auto; object-fit: contain; border: 2px solid white; border-radius: 5px;">
+                <div class="d-none d-sm-flex flex-column ms-2" style="line-height: 1;">
                     <span class="fw-bold text-uppercase text-white"
-                        style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; letter-spacing: 1.5px;">BrutuS</span>
+                        style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; letter-spacing: 2px; border-bottom: 2px solid var(--primary-gold); display: inline-block; padding-bottom: 2px; margin-bottom: 2px;">BrutuS</span>
                     <span class="text-secondary text-uppercase"
-                        style="font-size: 0.55rem; letter-spacing: 0.5px; font-weight: 600; color: var(--primary-gold) !important;">California
-                        Tobacco
-                        Company</span>
+                        style="font-size: 0.5rem; letter-spacing: 2px; font-weight: 800; color: var(--primary-gold) !important; opacity: 0.8;">California
+                        Tobacco Co.</span>
                 </div>
             </a>
 
@@ -415,9 +415,9 @@
                     <div class="legal-note mt-5 d-none d-lg-block">
                         <div class="legal-title">Professional Standard</div>
                         <p class="mb-0">
-                            Our industrial renders are developed exclusively for <span class="premium-serif text-dark"
+                            Our industrial renders are developed exclusively for <span class="premium-serif text-white"
                                 style="font-size: 0.8rem;">Brand Identity</span>.
-                            Strict adherence to <span class="fw-bold text-dark">COTPA 2003</span> regulatory compliance
+                            Strict adherence to <span class="fw-bold text-white">COTPA 2003</span> regulatory compliance
                             is maintained across all global showcase profiles.
                         </p>
                     </div>
@@ -435,9 +435,10 @@
                 <div class="mb-5">
                     <h1 class="h3 fw-bold mb-2 uppercase-spacing" style="font-family: 'Montserrat', sans-serif;">
                         Professional Catalog</h1>
-                    <p class="text-secondary small mb-3">Explore our consistent industrial-grade flavour profiles
+                    <p class="text-white-50 small mb-3">Explore our consistent industrial-grade flavour profiles
                         with
-                        <span class="premium-serif text-dark">Elite Precision</span>.
+                        <span class="premium-serif text-gold" style="color: var(--primary-gold);">Elite
+                            Precision</span>.
                     </p>
                 </div>
 
@@ -564,12 +565,11 @@
         </div>
     </div>
 
-    <footer class="text-white py-5" style="background: #050505; border-top: 1px solid var(--primary-gold);">
+    <footer class="text-white pt-5 pb-3" style="background: #050505; border-top: 1px solid var(--primary-gold);">
         <div class="container text-center">
             <img src="assets/brutus-main-logo.jpg" alt="Logo"
                 style="height: 60px; width: auto; object-fit: contain; border-radius: 5px; border: 1px solid white; margin-bottom: 20px;">
-            <p class="small text-secondary mb-0">California Tobacco Company © 2026. Consistent Excellence Since 1985.
-            </p>
+            <p class="small text-secondary mb-0">&copy; 2026 California Tobacco Company. All rights reserved.</p>
         </div>
     </footer>
 

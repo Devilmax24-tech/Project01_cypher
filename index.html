@@ -513,7 +513,7 @@
         footer {
             background: #050505;
             color: #eee;
-            padding: 100px 0 50px;
+            padding: 80px 0 30px;
             border-top: 1px solid var(--primary-gold);
         }
 
@@ -828,7 +828,8 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            background: rgba(255, 255, 255, 0.03);
+            background: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
         }
 
@@ -1072,13 +1073,12 @@
             <a class="navbar-brand d-flex align-items-center me-3" href="index.html">
                 <img src="assets/brutus-main-logo.jpg" alt="BrutuS Logo"
                     style="height: 50px; width: auto; object-fit: contain; border: 2px solid white; border-radius: 5px;">
-                <div class="d-none d-sm-flex flex-column ms-2" style="line-height: 1.1;">
+                <div class="d-none d-sm-flex flex-column ms-2" style="line-height: 1;">
                     <span class="fw-bold text-uppercase text-white"
-                        style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; letter-spacing: 1px;">BrutuS</span>
+                        style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; letter-spacing: 2px; border-bottom: 2px solid var(--primary-gold); display: inline-block; padding-bottom: 2px; margin-bottom: 2px;">BrutuS</span>
                     <span class="text-secondary text-uppercase"
-                        style="font-size: 0.55rem; letter-spacing: 0.5px; font-weight: 600; color: #aaa !important;">California
-                        Tobacco
-                        Company</span>
+                        style="font-size: 0.5rem; letter-spacing: 2px; font-weight: 800; color: var(--primary-gold) !important; opacity: 0.8;">California
+                        Tobacco Co.</span>
                 </div>
             </a>
 
@@ -1403,17 +1403,9 @@
     </style>
 
     <div
-        style="margin-top: 55px; background: #000; min-height: 85vh; display: flex; align-items: center; position: relative; overflow: hidden;">
+        style="margin-top: 65px; background: #000; min-height: 75vh; display: flex; align-items: center; position: relative; overflow: hidden;">
 
-        <!-- Video Background -->
-        <video autoplay muted loop playsinline
-            style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: 1; transform: translate(-50%, -50%); opacity: 0.4; filter: contrast(120%) brightness(80%);">
-            <source
-                src="https://assets.mixkit.co/videos/preview/mixkit-smoke-drifting-on-a-black-background-472-large.mp4"
-                type="video/mp4">
-        </video>
-
-        <!-- Floating Particles Background -->
+        <!-- Background -->
         <div class="floating-particles">
             <div class="particle" style="width: 4px; height: 4px; left: 10%; animation-delay: 0s;"></div>
             <div class="particle" style="width: 6px; height: 6px; left: 20%; animation-delay: 2s;"></div>
@@ -1426,29 +1418,36 @@
             <div class="particle" style="width: 4px; height: 4px; left: 90%; animation-delay: 1.5s;"></div>
         </div>
 
-        <div class="container py-5" style="position: relative; z-index: 2;">
+        <div class="container py-4" style="position: relative; z-index: 2;">
             <div class="row align-items-center">
                 <!-- Text Content (Left) -->
                 <div class="col-lg-5 mb-5 mb-lg-0 text-white">
                     <span class="badge bg-gold text-dark fw-bold mb-3 px-3 py-2 text-uppercase hero-badge"
                         style="letter-spacing: 2px; background-color: #C5A059;">Product | Est. 1985</span>
 
-                    <h1 class="display-1 fw-bold mb-0 hero-title gradient-text"
-                        style="font-family: 'Playfair Display', serif; line-height: 1;">BrutuS</h1>
+                    <div class="brand-showcase mb-4">
+                        <h1 class="display-3 fw-bold mb-0 hero-title gradient-text"
+                            style="font-family: 'Playfair Display', serif; line-height: 1; letter-spacing: -2px;">BrutuS
+                        </h1>
 
-                    <h2 class="h3 fw-light text-uppercase mb-4 hero-subtitle"
-                        style="font-family: 'Montserrat', sans-serif; letter-spacing: 3px; opacity: 0.9;">California
-                        Tobacco Company</h2>
+                        <div class="d-flex align-items-center mt-2">
+                            <div style="height: 2px; width: 40px; background: var(--primary-gold); margin-right: 15px;">
+                            </div>
+                            <h2 class="h6 fw-bold text-uppercase mb-0"
+                                style="font-family: 'Montserrat', sans-serif; letter-spacing: 5px; color: var(--white); opacity: 0.9;">
+                                California Tobacco Co.</h2>
+                        </div>
+                    </div>
 
-                    <p class="lead mb-4 hero-description"
-                        style="margin-top: 30px; line-height: 1.8; color: #e0e0e0; font-size: 1.25rem;">
+                    <p class="mb-4 hero-description"
+                        style="margin-top: 15px; line-height: 1.7; color: #e0e0e0; font-size: 1.1rem;">
                         Delivering carefully crafted flavoured tobacco, defined by <span
                             class="fw-bold text-white">consistency</span> and <span
                             class="fw-bold text-white">control</span>.<br>
                         We also offer customized flavour solutions to meet specific market demands.
                     </p>
 
-                    <div class="d-flex align-items-center gap-3 mt-5 hero-stats">
+                    <div class="d-flex align-items-center gap-3 mt-4 hero-stats">
                         <div class="d-flex flex-column border-start ps-4" style="border-color: #C5A059 !important;">
                             <span class="h2 fw-bold mb-0" style="color: #C5A059;">40+</span>
                             <span class="small text-uppercase text-white-50 ms-1" style="letter-spacing: 1px;">Years in
@@ -1458,18 +1457,16 @@
                 </div>
 
                 <!-- Layered Image Showcase (Right) -->
-                <div class="col-lg-7 position-relative" style="perspective: 2000px; padding-top: 50px;">
-                    <div class="hero-image-wrapper" style="transform-style: preserve-3d; margin-top: 50px;">
+                <div class="col-lg-7 position-relative" style="perspective: 2000px; padding-top: 20px;">
+                    <div class="hero-image-wrapper"
+                        style="transform-style: preserve-3d; margin-top: 20px; position: relative; padding: 10px;">
                         <!-- Main Product Collage with Layered Animation -->
-                        <div class="position-relative hero-image-animated" style="transform-style: preserve-3d;">
+                        <div class="position-relative hero-image-animated"
+                            style="transform-style: preserve-3d; z-index: 2;">
                             <img src="assets/premium-tobacco-leaves.png" alt="BrutuS Smoking Profiles"
                                 class="img-fluid rounded-4 shadow-lg"
-                                style="box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 50px rgba(197,160,89,0.3); width: 100%; border: 4px solid white; transform: translateZ(50px);">
+                                style="box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 40px rgba(197,160,89,0.3); width: 85%; border: 3px solid white; transform: translateZ(30px); margin: 0 auto; display: block;">
                         </div>
-                    </div>
-                    <!-- Decorative Background Element -->
-                    <div class="position-absolute top-50 start-50 translate-middle"
-                        style="width: 130%; height: 130%; background: radial-gradient(circle, rgba(197,160,89,0.2) 0%, rgba(0,0,0,0) 70%); z-index: -1; pointer-events: none; animation: pulseGlow 4s ease-in-out infinite;">
                     </div>
                 </div>
             </div>
@@ -1968,11 +1965,9 @@
                     </div>
                 </div>
             </div>
-            <hr class="border-secondary opacity-25 my-5">
-            <p class="small text-secondary text-center mb-0">&copy; <span id="year"></span>
-                California Tobacco
-                Company.
-                All rights reserved.</p>
+            <hr class="border-secondary opacity-10 mt-5 mb-4">
+            <p class="small text-secondary text-center mb-0">&copy; 2026 California Tobacco Company. All rights
+                reserved.</p>
         </div>
     </footer>
 
